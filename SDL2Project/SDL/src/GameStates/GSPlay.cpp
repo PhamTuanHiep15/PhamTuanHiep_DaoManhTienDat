@@ -19,7 +19,7 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play1.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play.jpg");
 
 	// background
 	
@@ -42,7 +42,7 @@ void GSPlay::Init()
 	obj = std::make_shared<SpriteAnimation>( texture, 2, 9, 6, 0.2f);
 	obj->SetFlip(SDL_FLIP_HORIZONTAL);
 	obj->SetSize(40, 50);
-	obj->Set2DPosition(240, 400);
+	obj->Set2DPosition(80, 360);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listAnimation.push_back(obj);
 
