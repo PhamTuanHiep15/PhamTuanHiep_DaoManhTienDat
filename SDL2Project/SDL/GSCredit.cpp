@@ -19,7 +19,7 @@ GSCredit::~GSCredit()
 void GSCredit::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
 
 	// background
 
@@ -28,14 +28,33 @@ void GSCredit::Init()
 	m_background->Set2DPosition(0, 0);
 
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	button->SetSize(50, 50);
-	button->Set2DPosition(SCREEN_WIDTH - 50, 10);
+	button->Set2DPosition(SCREEN_WIDTH - 10 - button->GetWidth(), 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
+
+	//Set Font
+	m_textColor = { 255, 255, 255 };
+	m_textColor1 = { 30, 50, 140 };
+	m_textGameName = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
+	m_textGameName->SetSize(450, 75);
+	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 180);
+	m_textGameName->LoadFromRenderText("BACK TO SCHOOL");
+	m_Info1 = std::make_shared<Text>("Data/info1.otf", m_textColor1);
+	m_Info1->SetSize(425, 50);
+	m_Info1->Set2DPosition((SCREEN_WIDTH - m_Info1->GetWidth()) / 2, SCREEN_HEIDHT / 2 + 50);
+	m_Info1->LoadFromRenderText("Dao Manh Tien Dat");
+	m_Info2 = std::make_shared<Text>("Data/info1.otf", m_textColor1);
+	m_Info2->SetSize(350, 50);
+	m_Info2->Set2DPosition((SCREEN_WIDTH - m_Info2->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 25);
+	m_Info2->LoadFromRenderText("Pham Tuan Hiep");
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
 
 
 	//Camera::GetInstance()->SetTarget(obj);
@@ -105,4 +124,7 @@ void GSCredit::Draw(SDL_Renderer* renderer)
 	{
 		it->Draw(renderer);
 	}
+	m_textGameName->Draw(renderer);
+	m_Info1->Draw(renderer);
+	m_Info2->Draw(renderer);
 }
