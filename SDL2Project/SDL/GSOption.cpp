@@ -37,19 +37,23 @@ void GSOption::Init()
 		});
 	m_listButton.push_back(button);
 
-	//music game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
-	std::shared_ptr<MouseButton> btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnOption->SetSize(100, 100);
-	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2, SCREEN_HEIDHT / 2 -170);
-	m_listButton.push_back(btnOption);
-	
 	//sfx game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_sfx.tga");
-	btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2, SCREEN_HEIDHT / 2 );
-	btnOption->SetSize(100, 100);
-	m_listButton.push_back(btnOption);
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
+	std::shared_ptr<MouseButton> btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusic->SetSize(100, 100);
+	btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 -170);
+	btnMusic->SetOnClick([]() {
+		});
+	m_listButton.push_back(btnMusic);
+	
+	//link game
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_link.png");
+	std::shared_ptr<MouseButton> btnLink = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnLink->Set2DPosition((SCREEN_WIDTH - btnLink->GetWidth()) / 2, SCREEN_HEIDHT / 2 );
+	btnLink->SetSize(100, 100);
+	btnLink->SetOnClick([]() {
+		});
+	m_listButton.push_back(btnLink);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listAnimation.push_back(obj);
 

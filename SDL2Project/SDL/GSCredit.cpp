@@ -39,7 +39,7 @@ void GSCredit::Init()
 
 	//Set Font
 	m_textColor = { 255, 255, 255 };
-	m_textColor1 = { 30, 50, 140 };
+	m_textColor1 = { 0, 0, 0 };
 	m_textGameName = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
 	m_textGameName->SetSize(450, 75);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 180);
