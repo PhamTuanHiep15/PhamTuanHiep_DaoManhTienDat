@@ -1,4 +1,4 @@
-#include "GSMenu.h"
+﻿#include "GSMenu.h"
 
 GSMenu::GSMenu() : GameStateBase(StateType::STATE_MENU),
 m_background(nullptr), m_listButton(std::list<std::shared_ptr<MouseButton>>{}), m_textGameName(nullptr)
@@ -14,6 +14,10 @@ GSMenu::~GSMenu()
 
 void GSMenu::Init()
 {
+	// Khởi tạo đối tượng âm thanh cho sự kiện click
+	m_soundEffectOnClick = std::make_shared<Sound>();
+	m_soundEffectOnClick->LoadSound("Data/Sounds/click.mp3");
+
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
 
@@ -29,7 +33,8 @@ void GSMenu::Init()
 	
 	btnPlay->SetSize(150, 150);
 	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth())/2, (SCREEN_HEIDHT - btnPlay->GetHeight()) / 2);
-	btnPlay->SetOnClick([]() {
+	btnPlay->SetOnClick([this]() {
+		m_soundEffectOnClick->PlaySfx(0);
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
 	m_listButton.push_back(btnPlay);
@@ -40,7 +45,8 @@ void GSMenu::Init()
 	//btnClose = std::make_shared<MouseButton>(texture);
 	btnClose->SetSize(100, 100);
 	btnClose->Set2DPosition((SCREEN_WIDTH - btnClose->GetWidth())/2+100, SCREEN_HEIDHT / 2+100);
-	btnClose->SetOnClick([]() {
+	btnClose->SetOnClick([this]() {
+		m_soundEffectOnClick->PlaySfx(0);
 		exit(0);
 		});
 	m_listButton.push_back(btnClose);
@@ -51,7 +57,8 @@ void GSMenu::Init()
 
 	btnOption->SetSize(100, 100);
 	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2-100, SCREEN_HEIDHT / 2+100);
-	btnOption->SetOnClick([]() {
+	btnOption->SetOnClick([this]() {
+		m_soundEffectOnClick->PlaySfx(0);
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_OPTION);
 		});
 	m_listButton.push_back(btnOption);
@@ -61,7 +68,8 @@ void GSMenu::Init()
 	btnCredit = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnCredit->Set2DPosition((SCREEN_WIDTH - btnCredit->GetWidth()) / 2, SCREEN_HEIDHT / 2+100 );
 	btnCredit->SetSize(100, 100);
-	btnCredit->SetOnClick([]() {
+	btnCredit->SetOnClick([this]() {
+		m_soundEffectOnClick->PlaySfx(0);
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
 	m_listButton.push_back(btnCredit);

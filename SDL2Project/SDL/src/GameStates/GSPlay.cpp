@@ -18,6 +18,9 @@ GSPlay::~GSPlay()
 
 void GSPlay::Init()
 {
+	m_soundEffectOnClick = std::make_shared<Sound>();
+	m_soundEffectOnClick->LoadSound("Data/Sounds/click.mp3");
+
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play.jpg");
 
@@ -48,6 +51,9 @@ void GSPlay::Init()
 
 	m_KeyPress = 0;
 	
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
 }
 
 void GSPlay::Exit()
@@ -128,6 +134,7 @@ void GSPlay::HandleTouchEvents(SDL_Event& e)
 	{
 		if (button->HandleTouchEvent(&e))
 		{
+			m_soundEffectOnClick->PlaySfx(0);
 			break;
 		}
 	}
@@ -139,11 +146,12 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	switch (m_KeyPress)//Handle Key event
-	{
-	default:
-		break;
-	}
+	//switch (m_KeyPress)//Handle Key event
+	//{
+	//default:
+	//	break;
+	//}
+
 	// Key State event
 
 	for (auto it : m_listButton)
