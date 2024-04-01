@@ -96,6 +96,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\GameEntity</Filter>
     </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Source Files\GameEntity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameObject\BaseObject.h">
@@ -174,6 +177,9 @@
       <Filter>Source Files\GameEntity</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Source Files\GameEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
       <Filter>Source Files\GameEntity</Filter>
     </ClInclude>
   </ItemGroup>
