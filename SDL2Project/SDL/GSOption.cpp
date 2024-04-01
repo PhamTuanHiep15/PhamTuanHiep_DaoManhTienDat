@@ -1,13 +1,16 @@
-#include "GSOption.h"
+﻿#include "GSOption.h"
 #include "GameObject/TextureManager.h"
 #include "GameObject/Sprite2D.h"
 #include "GameObject/MouseButton.h"
 #include "GameObject/SpriteAnimation.h"
 #include "GameObject/Camera.h"
 #include "KeyState.h"
+#include "Sound.h"
 
 GSOption::GSOption()
 {
+	m_soundEffectOn.LoadSfx("Data/Sounds/Alarm01.wav");
+	m_soundEffectOff.LoadSfx("Data/Sounds/1.mp3");
 }
 
 
@@ -39,7 +42,7 @@ void GSOption::Init()
 
 	//sfx game
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
-	std::shared_ptr<MouseButton> btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnMusic->SetSize(100, 100);
 	btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 -170);
 	btnMusic->SetOnClick([]() {
@@ -56,6 +59,10 @@ void GSOption::Init()
 	m_listButton.push_back(btnLink);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listAnimation.push_back(obj);
+
+	// Play sound effects
+	m_soundEffectOn.PlaySfx(0); // Phát âm thanh khi trạng thái được khởi tạo
+	m_soundEffectOff.PlaySfx(0);
 
 	m_KeyPress = 0;
 
@@ -93,7 +100,16 @@ void GSOption::HandleTouchEvents(SDL_Event& e)
 	{
 		if (button->HandleTouchEvent(&e))
 		{
-			break;
+			if (button == btnMusic)
+			{	
+				m_isSoundOn = !m_isSoundOn;
+				if (m_isSoundOn)
+					m_soundEffectOff.PlaySfx(0); // Tắt âm thanh
+				else
+					m_soundEffectOn.PlaySfx(0); // Bật âm thanh
+				m_isSoundOn = !m_isSoundOn; // Cập nhật trạng thái
+				break;
+			}
 		}
 	}
 }
