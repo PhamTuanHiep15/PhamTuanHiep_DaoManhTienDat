@@ -142,11 +142,12 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	switch (m_KeyPress)//Handle Key event
-	{
-	default:
-		break;
-	}
+	//switch (m_KeyPress)//Handle Key event
+	//{
+	//default:
+	//	break;
+	//}
+
 	// Key State event
 
 	for (auto it : m_listButton)

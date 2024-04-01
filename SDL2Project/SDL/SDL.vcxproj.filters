@@ -22,6 +22,9 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{b61357b4-8507-48e7-95d0-cba6485693e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameEntity">
+      <UniqueIdentifier>{863b36de-b156-469f-a51e-34902bc1f645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameObject\Camera.cpp">
@@ -83,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="GSCredit.cpp">
       <Filter>Source Files\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\GameEntity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="GSCredit.h">
       <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Source Files\GameEntity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
