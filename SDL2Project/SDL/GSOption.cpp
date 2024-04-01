@@ -48,6 +48,32 @@ void GSOption::Init()
 	btnMusic->SetOnClick([]() {
 		});
 	m_listButton.push_back(btnMusic);
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
+	*/
+
+	bool isMusicOn = true;
+	auto texture_music_on = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
+	auto texture_music_off = ResourceManagers::GetInstance()->GetTexture("btn_sfx_off.tga");
+	std::shared_ptr<MouseButton> btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusic->SetSize(100, 100);
+	btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 170);
+	btnMusic->SetOnClick([this, btnMusic, texture_music_on, texture_music_off, isMusicOn]() mutable {
+		if (isMusicOn) {
+			btnMusic->SetTexture(texture_music_off);
+			this->Pause();
+		}
+		else {
+			btnMusic->SetTexture(texture_music_on);
+			this->Resume();
+		}
+		isMusicOn = !isMusicOn;
+		});
+	m_listButton.push_back(btnMusic);
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
 	
 	//link game
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_link.png");
@@ -75,10 +101,15 @@ void GSOption::Exit()
 
 void GSOption::Pause()
 {
-
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PauseSound();
 }
 void GSOption::Resume()
 {
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
 	// button close
 	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
 	//button->SetTexture(texture);
