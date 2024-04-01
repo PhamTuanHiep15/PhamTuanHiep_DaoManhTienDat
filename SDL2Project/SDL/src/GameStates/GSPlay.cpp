@@ -48,6 +48,9 @@ void GSPlay::Init()
 
 	m_KeyPress = 0;
 	
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->PlaySound();
 }
 
 void GSPlay::Exit()
