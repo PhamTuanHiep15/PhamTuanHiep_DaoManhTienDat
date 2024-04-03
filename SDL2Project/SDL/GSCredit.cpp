@@ -52,8 +52,9 @@ void GSCredit::Init()
 	m_Info2->SetSize(350, 50);
 	m_Info2->Set2DPosition((SCREEN_WIDTH - m_Info2->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 25);
 	m_Info2->LoadFromRenderText("Pham Tuan Hiep");
+
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->LoadSound("Data/Sounds/Menu.wav");
 	m_Sound->PlaySound();
 
 
@@ -66,15 +67,17 @@ void GSCredit::Init()
 
 void GSCredit::Exit()
 {
+	m_Sound->StopSound();
 }
 
 
 void GSCredit::Pause()
 {
-
+	m_Sound->PauseSound();
 }
 void GSCredit::Resume()
 {
+	m_Sound->PlaySound();
 	// button close
 	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
 	//button->SetTexture(texture);

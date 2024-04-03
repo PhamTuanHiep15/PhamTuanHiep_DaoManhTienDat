@@ -16,7 +16,7 @@ void GSMenu::Init()
 {
 	// Khởi tạo đối tượng âm thanh cho sự kiện click
 	m_soundEffectOnClick = std::make_shared<Sound>();
-	m_soundEffectOnClick->LoadSound("Data/Sounds/click.mp3");
+	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
@@ -82,7 +82,7 @@ void GSMenu::Init()
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth())/2, SCREEN_HEIDHT / 2 - 180);
 	m_textGameName->LoadFromRenderText("BACK TO SCHOOL");
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->LoadSound("Data/Sounds/Menu.wav");
 	m_Sound->PlaySound();
 	
 }

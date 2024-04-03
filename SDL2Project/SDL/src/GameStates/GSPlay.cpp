@@ -19,7 +19,7 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	m_soundEffectOnClick = std::make_shared<Sound>();
-	m_soundEffectOnClick->LoadSound("Data/Sounds/click.mp3");
+	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play.jpg");
@@ -52,21 +52,23 @@ void GSPlay::Init()
 	m_KeyPress = 0;
 	
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->LoadSound("Data/Sounds/Play.wav");
 	m_Sound->PlaySound();
 }
 
 void GSPlay::Exit()
 {
+	m_Sound->StopSound();
 }
 
 
 void GSPlay::Pause()
 {
-
+	m_Sound->PauseSound();
 }
 void GSPlay::Resume()
 {
+	m_Sound->PlaySound();
 	// button close
 	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
 	//button->SetTexture(texture);

@@ -7,10 +7,9 @@
 #include "KeyState.h"
 #include "Sound.h"
 
-GSOption::GSOption()
+GSOption::GSOption() : m_soundEffectClick(std::make_shared<Sound>()), m_musicBackground(std::make_shared<Sound>())
 {
-	m_soundEffectOn.LoadSfx("Data/Sounds/Alarm01.wav");
-	m_soundEffectOff.LoadSfx("Data/Sounds/1.mp3");
+	m_soundEffectClick->LoadSfx("Data/Sounds/click.wav");
 }
 
 
@@ -25,7 +24,6 @@ void GSOption::Init()
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
 
 	// background
-
 	m_background = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
 	m_background->Set2DPosition(0, 0);
@@ -36,59 +34,49 @@ void GSOption::Init()
 	button->SetSize(50, 50);
 	button->Set2DPosition(SCREEN_WIDTH - 10 - button->GetWidth(), 10);
 	button->SetOnClick([this]() {
+		m_soundEffectClick->PlaySfx(0);
 		GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
 
-	//sfx game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
+	// Button Music
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
 	btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnMusic->SetSize(100, 100);
 	btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 -170);
-	btnMusic->SetOnClick([]() {
-		});
-	m_listButton.push_back(btnMusic);
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
-	m_Sound->PlaySound();
-	*/
-
-	bool isMusicOn = true;
-	auto texture_music_on = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
-	auto texture_music_off = ResourceManagers::GetInstance()->GetTexture("btn_sfx_off.tga");
-	std::shared_ptr<MouseButton> btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnMusic->SetSize(100, 100);
-	btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 170);
-	btnMusic->SetOnClick([this, btnMusic, texture_music_on, texture_music_off, isMusicOn]() mutable {
-		if (isMusicOn) {
-			btnMusic->SetTexture(texture_music_off);
-			this->Pause();
+	btnMusic->SetOnClick([this]() {
+		m_soundEffectClick->PlaySfx(0);
+		m_isMusicOn = !m_isMusicOn; // Đảo ngược trạng thái âm nhạc
+		if (m_isMusicOn) {
+			m_musicBackground->PlaySound();
+			btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_on.tga"));
 		}
 		else {
-			btnMusic->SetTexture(texture_music_on);
-			this->Resume();
+			m_musicBackground->PauseSound();
+			btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_off.tga"));
 		}
-		isMusicOn = !isMusicOn;
 		});
 	m_listButton.push_back(btnMusic);
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
-	m_Sound->PlaySound();
+
+	// Nhạc nền
+		m_musicBackground->LoadSound("Data/Sounds/Menu.wav");
+		m_musicBackground->PlaySound();
 	
-	//link game
+	// Button link
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_link.png");
 	std::shared_ptr<MouseButton> btnLink = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnLink->Set2DPosition((SCREEN_WIDTH - btnLink->GetWidth()) / 2, SCREEN_HEIDHT / 2 );
 	btnLink->SetSize(100, 100);
-	btnLink->SetOnClick([]() {
+	btnLink->SetOnClick([this]() {
+		m_soundEffectClick->PlaySfx(0);
 		});
 	m_listButton.push_back(btnLink);
+
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listAnimation.push_back(obj);
 
 	// Play sound effects
-	m_soundEffectOn.PlaySfx(0); // Phát âm thanh khi trạng thái được khởi tạo
-	m_soundEffectOff.PlaySfx(0);
+	m_soundEffectClick->PlaySfx(0);
 
 	m_KeyPress = 0;
 
@@ -96,24 +84,19 @@ void GSOption::Init()
 
 void GSOption::Exit()
 {
+	m_musicBackground->StopSound();
 }
 
 
 void GSOption::Pause()
 {
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
-	m_Sound->PauseSound();
+	m_musicBackground->PauseSound();
 }
 void GSOption::Resume()
 {
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
-	m_Sound->PlaySound();
-	// button close
-	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
-	//button->SetTexture(texture);
-
+	if (m_isMusicOn) {
+		m_musicBackground->PlaySound();
+	}
 }
 
 
@@ -132,18 +115,13 @@ void GSOption::HandleTouchEvents(SDL_Event& e)
 		if (button->HandleTouchEvent(&e))
 		{
 			if (button == btnMusic)
-			{	
-				m_isSoundOn = !m_isSoundOn;
-				if (m_isSoundOn)
-					m_soundEffectOff.PlaySfx(0); // Tắt âm thanh
-				else
-					m_soundEffectOn.PlaySfx(0); // Bật âm thanh
-				m_isSoundOn = !m_isSoundOn; // Cập nhật trạng thái
-				break;
+			{
+				
 			}
 		}
 	}
 }
+
 
 void GSOption::HandleMouseMoveEvents(int x, int y)
 {
