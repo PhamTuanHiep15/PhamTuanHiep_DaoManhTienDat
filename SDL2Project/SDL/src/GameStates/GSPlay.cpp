@@ -98,11 +98,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		switch (e.key.keysym.sym)                                                                                            
 		{                                                                                                                     
 		case SDLK_LEFT:
-			printf("MOVE LEFT");
 			m_KeyPress |= 1;
 			break;
 		case SDLK_DOWN:
-			printf("MOVE BACK");
 			m_KeyPress |= 1 << 1;
 			break;
 		case SDLK_RIGHT:
