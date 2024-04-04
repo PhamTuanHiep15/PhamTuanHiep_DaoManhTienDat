@@ -5,6 +5,7 @@
 #include "GameObject/SpriteAnimation.h"
 #include "GameObject/Camera.h"
 #include "KeyState.h"
+#include <random>
 
 GSPlay::GSPlay()
 {
@@ -56,11 +57,11 @@ void GSPlay::Init()
 	m_musicBackground->PlaySound();
 
 	//item
-	texture = ResourceManagers::GetInstance()->GetTexture("Booksheet.png");
-	obj = std::make_shared<SpriteAnimation>(texture, 3, 6, 7, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sneakLeft.png");
+	obj = std::make_shared<SpriteAnimation>(texture, 1, 4, 1, 0.2f);
 	obj->SetFlip(SDL_FLIP_HORIZONTAL);
-	obj->SetSize(40, 50);
-	obj->Set2DPosition(360, 360);
+	obj->SetSize(70, 30);
+	obj->Set2DPosition(360, 380);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listObjAnimation.push_back(obj);
 }
@@ -180,6 +181,35 @@ void GSPlay::Update(float deltaTime)
 
 		it->Update(deltaTime);
 
+	}
+	//sneak move
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 1000);
+
+	for (auto it : m_listObjAnimation)
+	{
+		bool isMovingLeft = true;
+		int randomNumber = dis(gen);
+		if (randomNumber > 500)
+		{
+
+			if (isMovingLeft)
+			{
+				it->MoveRight(deltaTime);
+				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakRight.png"));
+				printf("%d\n", randomNumber);
+				isMovingLeft = !isMovingLeft;
+			}
+			else
+			{
+				it->MoveLeft(deltaTime);
+				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakLeft.png"));
+				printf("%d\n", randomNumber);
+				isMovingLeft = !isMovingLeft;
+			}
+		}
+		it->Update(deltaTime);
 	}
 
 	//Update position of camera
