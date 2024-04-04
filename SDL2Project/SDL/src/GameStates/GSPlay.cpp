@@ -54,6 +54,15 @@ void GSPlay::Init()
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/Play.wav");
 	m_Sound->PlaySound();
+
+	//item
+	texture = ResourceManagers::GetInstance()->GetTexture("Booksheet.png");
+	obj = std::make_shared<SpriteAnimation>(texture, 3, 6, 7, 0.2f);
+	obj->SetFlip(SDL_FLIP_HORIZONTAL);
+	obj->SetSize(40, 50);
+	obj->Set2DPosition(360, 360);
+	//Camera::GetInstance()->SetTarget(obj);
+	m_listObjAnimation.push_back(obj);
 }
 
 void GSPlay::Exit()
@@ -185,4 +194,9 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	{
 		it->Draw(renderer);
 	}
+	for (auto it : m_listObjAnimation)
+	{
+		it->Draw(renderer);
+	}
+	
 }
