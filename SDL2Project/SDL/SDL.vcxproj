@@ -166,12 +166,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GSCredit.cpp" />
     <ClCompile Include="GSOption.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
     <ClCompile Include="src\GameObject\Camera.cpp" />
@@ -192,12 +188,8 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Entity.h" />
     <ClInclude Include="GSCredit.h" />
     <ClInclude Include="GSOption.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
