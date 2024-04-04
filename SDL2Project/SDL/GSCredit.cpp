@@ -43,7 +43,7 @@ void GSCredit::Init()
 	m_textGameName = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
 	m_textGameName->SetSize(450, 75);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 180);
-	m_textGameName->LoadFromRenderText("BACK TO SCHOOL");
+	m_textGameName->LoadFromRenderText("ADVENTURE");
 	m_Info1 = std::make_shared<Text>("Data/info1.otf", m_textColor1);
 	m_Info1->SetSize(425, 50);
 	m_Info1->Set2DPosition((SCREEN_WIDTH - m_Info1->GetWidth()) / 2, SCREEN_HEIDHT / 2 + 50);

@@ -80,7 +80,7 @@ void GSMenu::Init()
 	m_textGameName = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
 	m_textGameName->SetSize(450, 75);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth())/2, SCREEN_HEIDHT / 2 - 180);
-	m_textGameName->LoadFromRenderText("BACK TO SCHOOL");
+	m_textGameName->LoadFromRenderText("ADVENTURE");
 
 	//bool isMusicOn = GameStateMachine::GetInstance()->IsMusicOn();
 	//GameStateMachine::GetInstance()->UpdateMusicState(isMusicOn);
