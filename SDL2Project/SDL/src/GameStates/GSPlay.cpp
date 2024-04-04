@@ -174,6 +174,10 @@ void GSPlay::Update(float deltaTime)
 			it->MoveRight(deltaTime);
 			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunRight.png"));
 		}
+		else if (m_KeyPress & (1 << 1))
+		{
+			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_Attack.png"));
+		}
 		else it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_Idle.png"));
 
 		it->Update(deltaTime);
