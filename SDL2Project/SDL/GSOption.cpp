@@ -116,7 +116,17 @@ void GSOption::HandleTouchEvents(SDL_Event& e)
 		{
 			if (button == btnMusic)
 			{
-				
+				//m_isMusicOn = !m_isMusicOn; // Đảo ngược trạng thái âm nhạc
+				//if (m_isMusicOn) {
+				//	m_musicBackground->PlaySound();
+				//	btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_on.tga"));
+				//}
+				//else {
+				//	m_musicBackground->PauseSound();
+				//	btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_off.tga"));
+				//}
+				//// Gửi thông điệp tới GameStateMachine
+				////GameStateMachine::GetInstance()->UpdateMusicState(m_isMusicOn);
 			}
 		}
 	}

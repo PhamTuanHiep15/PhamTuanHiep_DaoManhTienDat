@@ -36,7 +36,7 @@ private:
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<Text>					m_textGameName,m_Info1,m_Info2;
 	SDL_Color m_textColor,m_textColor1;
-	std::shared_ptr<Sound>					m_Sound, m_soundEffectOnClick;
+	std::shared_ptr<Sound>					m_musicBackground, m_soundEffectOnClick;
 	std::shared_ptr<MouseButton> button;
 
 	float time = 0.0f;

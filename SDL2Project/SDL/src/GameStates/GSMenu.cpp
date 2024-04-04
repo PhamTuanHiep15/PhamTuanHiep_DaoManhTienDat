@@ -81,9 +81,12 @@ void GSMenu::Init()
 	m_textGameName->SetSize(450, 75);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth())/2, SCREEN_HEIDHT / 2 - 180);
 	m_textGameName->LoadFromRenderText("BACK TO SCHOOL");
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Menu.wav");
-	m_Sound->PlaySound();
+
+	//bool isMusicOn = GameStateMachine::GetInstance()->IsMusicOn();
+	//GameStateMachine::GetInstance()->UpdateMusicState(isMusicOn);
+	m_musicBackground = std::make_shared<Sound>();
+	m_musicBackground->LoadSound("Data/Sounds/Menu.wav");
+	m_musicBackground->PlaySound();
 	
 }
 
@@ -95,14 +98,14 @@ void GSMenu::Exit()
 
 void GSMenu::Pause()
 {
-	m_Sound->StopSound();
+	m_musicBackground->StopSound();
 	// button close
 	
 }
 
 void GSMenu::Resume()
 {
-	m_Sound->PlaySound();
+	m_musicBackground->PlaySound();
 }
 
 

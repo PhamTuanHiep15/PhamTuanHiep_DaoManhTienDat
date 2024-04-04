@@ -37,7 +37,7 @@ private:
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<Sound> m_soundEffectClick;
 
-	bool m_isMusicOn;
+	bool m_isMusicOn=true;
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
 };

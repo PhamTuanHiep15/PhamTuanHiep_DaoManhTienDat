@@ -1,4 +1,4 @@
-
+﻿
 #include "GameStateMachine.h"
 #include "GameStateBase.h"
 GameStateMachine::GameStateMachine() : m_running(true), m_pActiveState(nullptr), m_pNextState(nullptr), m_fullscreen(false)
@@ -10,6 +10,23 @@ GameStateMachine::~GameStateMachine()
 {
 }
 
+void GameStateMachine::UpdateMusicState(bool isMusicOn)
+{
+    m_isMusicOn = isMusicOn;
+    if (m_isMusicOn) {
+        // Bật nhạc nền
+        m_musicBackground->PlaySound();
+    }
+    else {
+        // Tắt nhạc nền
+        m_musicBackground->PauseSound();
+    }
+}
+
+bool GameStateMachine::IsMusicOn() const
+{
+	return m_isMusicOn;
+}
 
 void GameStateMachine::Cleanup()
 {

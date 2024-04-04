@@ -1,6 +1,8 @@
 #pragma once
 #include "../GameManager/Singleton.h"
 #include <list>
+#include "Sound.h"
+
 class GameStateBase;
 enum class StateType
 {
@@ -16,6 +18,9 @@ class GameStateMachine : public CSingleton<GameStateMachine>
 public:
 	GameStateMachine();
 	~GameStateMachine();
+
+	void UpdateMusicState(bool isMusicOn);
+	bool IsMusicOn() const;
 
 	void	Cleanup();
 
@@ -49,4 +54,6 @@ private:
 	std::shared_ptr<GameStateBase>				m_pNextState;
 	bool	m_running;
 	bool	m_fullscreen;
+	bool m_isMusicOn;
+	std::shared_ptr<Sound> m_musicBackground;
 };

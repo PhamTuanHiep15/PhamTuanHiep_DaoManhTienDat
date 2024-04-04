@@ -51,9 +51,9 @@ void GSPlay::Init()
 
 	m_KeyPress = 0;
 	
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Play.wav");
-	m_Sound->PlaySound();
+	m_musicBackground = std::make_shared<Sound>();
+	m_musicBackground->LoadSound("Data/Sounds/Play.wav");
+	m_musicBackground->PlaySound();
 
 	//item
 	texture = ResourceManagers::GetInstance()->GetTexture("Booksheet.png");
@@ -67,17 +67,17 @@ void GSPlay::Init()
 
 void GSPlay::Exit()
 {
-	m_Sound->StopSound();
+	m_musicBackground->StopSound();
 }
 
 
 void GSPlay::Pause()
 {
-	m_Sound->PauseSound();
+	m_musicBackground->PauseSound();
 }
 void GSPlay::Resume()
 {
-	m_Sound->PlaySound();
+	m_musicBackground->PlaySound();
 	// button close
 	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
 	//button->SetTexture(texture);

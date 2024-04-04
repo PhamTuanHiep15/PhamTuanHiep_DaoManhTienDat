@@ -53,9 +53,9 @@ void GSCredit::Init()
 	m_Info2->Set2DPosition((SCREEN_WIDTH - m_Info2->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 25);
 	m_Info2->LoadFromRenderText("Pham Tuan Hiep");
 
-	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Menu.wav");
-	m_Sound->PlaySound();
+	m_musicBackground = std::make_shared<Sound>();
+	m_musicBackground->LoadSound("Data/Sounds/Menu.wav");
+	m_musicBackground->PlaySound();
 
 
 	//Camera::GetInstance()->SetTarget(obj);
@@ -67,17 +67,17 @@ void GSCredit::Init()
 
 void GSCredit::Exit()
 {
-	m_Sound->StopSound();
+	m_musicBackground->StopSound();
 }
 
 
 void GSCredit::Pause()
 {
-	m_Sound->PauseSound();
+	m_musicBackground->PauseSound();
 }
 void GSCredit::Resume()
 {
-	m_Sound->PlaySound();
+	m_musicBackground->PlaySound();
 	// button close
 	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
 	//button->SetTexture(texture);
