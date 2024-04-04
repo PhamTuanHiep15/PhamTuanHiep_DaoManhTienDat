@@ -174,7 +174,7 @@ void GSPlay::Update(float deltaTime)
 			it->MoveRight(deltaTime);
 			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunRight.png"));
 		}
-
+		else it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_Idle.png"));
 
 		it->Update(deltaTime);
 
