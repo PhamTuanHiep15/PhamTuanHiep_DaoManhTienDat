@@ -148,13 +148,7 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	//switch (m_KeyPress)//Handle Key event
-	//{
-	//default:
-	//	break;
-	//}
 
-	// Key State event
 
 	for (auto it : m_listButton)
 	{
@@ -164,15 +158,18 @@ void GSPlay::Update(float deltaTime)
 	{
 		if (m_KeyPress == 1)
 		{
-			
-		//	it->MoveLeft(deltaTime);
+			it->MoveLeft(deltaTime);
+		}
+		else if (m_KeyPress == 1 << 2)
+		{
+			it->MoveRight(deltaTime);
 		}
 		it->Update(deltaTime);
 	}
 
 	//Update position of camera
-	//Camera::GetInstance()->Update(deltaTime);
-	//obj->Update(deltaTime);
+	Camera::GetInstance()->Update(deltaTime);
+	obj->Update(deltaTime);
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
