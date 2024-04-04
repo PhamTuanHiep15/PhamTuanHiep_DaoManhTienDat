@@ -186,28 +186,26 @@ void GSPlay::Update(float deltaTime)
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, 1000);
+	bool isMovingLeft = true;
 
 	for (auto it : m_listObjAnimation)
 	{
-		bool isMovingLeft = true;
 		int randomNumber = dis(gen);
-		if (randomNumber > 500)
+		if (randomNumber > 900)
 		{
-
 			if (isMovingLeft)
 			{
 				it->MoveRight(deltaTime);
 				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakRight.png"));
 				printf("%d\n", randomNumber);
-				isMovingLeft = !isMovingLeft;
 			}
 			else
 			{
 				it->MoveLeft(deltaTime);
 				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakLeft.png"));
 				printf("%d\n", randomNumber);
-				isMovingLeft = !isMovingLeft;
 			}
+			bool isMovingLeft = true;
 		}
 		it->Update(deltaTime);
 	}
