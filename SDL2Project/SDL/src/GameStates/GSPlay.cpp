@@ -41,11 +41,11 @@ void GSPlay::Init()
 	m_listButton.push_back(button);
 
    // Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("Actor1_2.tga");
-	obj = std::make_shared<SpriteAnimation>( texture, 2, 9, 6, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
+	obj = std::make_shared<SpriteAnimation>( texture, 1, 10, 1, 0.2f);
 	obj->SetFlip(SDL_FLIP_HORIZONTAL);
-	obj->SetSize(40, 50);
-	obj->Set2DPosition(80, 360);
+	obj->SetSize(125, 100);
+	obj->Set2DPosition(80, 310);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listAnimation.push_back(obj);
 
@@ -157,23 +157,27 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-
-
 	for (auto it : m_listButton)
 	{
 		it->Update(deltaTime);
 	}
+
 	for (auto it : m_listAnimation)
 	{
-		if (m_KeyPress == 1)
+		if (m_KeyPress & 1) 
 		{
 			it->MoveLeft(deltaTime);
+			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunLeft.png")); 
 		}
-		else if (m_KeyPress == 1 << 2)
+		else if (m_KeyPress & (1 << 2)) 
 		{
 			it->MoveRight(deltaTime);
+			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunRight.png"));
 		}
+
+
 		it->Update(deltaTime);
+
 	}
 
 	//Update position of camera
