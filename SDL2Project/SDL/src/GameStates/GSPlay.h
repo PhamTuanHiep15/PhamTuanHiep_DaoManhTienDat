@@ -35,7 +35,7 @@ private:
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<SpriteAnimation> item;
 	std::shared_ptr<MouseButton> button;
-	std::shared_ptr<Sound>					m_musicBackground, m_soundEffectOnClick;
+	std::shared_ptr<Sound> m_soundEffectOnClick;
 
 	float time = 0.0f;
 	float m_Velocity = 10.0f;

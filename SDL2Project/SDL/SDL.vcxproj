@@ -166,13 +166,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GSCredit.cpp" />
-    <ClCompile Include="GSOption.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
     <ClCompile Include="src\GameObject\Camera.cpp" />
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
+    <ClCompile Include="src\GameObject\MusicManager.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
     <ClCompile Include="src\GameObject\Sound.cpp" />
     <ClCompile Include="src\GameObject\Sprite2D.cpp" />
@@ -182,14 +181,14 @@
     <ClCompile Include="src\GameObject\Timer.cpp" />
     <ClCompile Include="src\GameStates\GameStateBase.cpp" />
     <ClCompile Include="src\GameStates\GameStateMachine.cpp" />
+    <ClCompile Include="src\GameStates\GSCredit.cpp" />
     <ClCompile Include="src\GameStates\GSIntro.cpp" />
     <ClCompile Include="src\GameStates\GSMenu.cpp" />
+    <ClCompile Include="src\GameStates\GSOption.cpp" />
     <ClCompile Include="src\GameStates\GSPlay.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GSCredit.h" />
-    <ClInclude Include="GSOption.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
@@ -199,6 +198,7 @@
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\MouseButton.h" />
+    <ClInclude Include="src\GameObject\MusicManager.h" />
     <ClInclude Include="src\GameObject\Renderer.h" />
     <ClInclude Include="src\GameObject\Sound.h" />
     <ClInclude Include="src\GameObject\Sprite2D.h" />
@@ -208,8 +208,10 @@
     <ClInclude Include="src\GameObject\Timer.h" />
     <ClInclude Include="src\GameStates\GameStateBase.h" />
     <ClInclude Include="src\GameStates\GameStateMachine.h" />
+    <ClInclude Include="src\GameStates\GSCredit.h" />
     <ClInclude Include="src\GameStates\GSIntro.h" />
     <ClInclude Include="src\GameStates\GSMenu.h" />
+    <ClInclude Include="src\GameStates\GSOption.h" />
     <ClInclude Include="src\GameStates\GSPlay.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

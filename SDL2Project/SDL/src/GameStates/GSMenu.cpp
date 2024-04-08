@@ -1,7 +1,7 @@
 ﻿#include "GSMenu.h"
 
 GSMenu::GSMenu() : GameStateBase(StateType::STATE_MENU),
-m_background(nullptr), m_listButton(std::list<std::shared_ptr<MouseButton>>{}), m_textGameName(nullptr)
+m_background(nullptr), m_listButton(std::list<std::shared_ptr<MouseButton>>{}), m_textGameName(nullptr), musicManager(nullptr)
 {
 }
 
@@ -17,6 +17,12 @@ void GSMenu::Init()
 	// Khởi tạo đối tượng âm thanh cho sự kiện click
 	m_soundEffectOnClick = std::make_shared<Sound>();
 	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
+
+	// Khởi tạo MusicManager
+	musicManager = std::make_shared<MusicManager>();
+	// Thiết lập nhạc nền cho GSMenu
+	musicManager->setBackgroundMusic("Data/Sounds/Menu.wav");
+	musicManager->toggleMusic(true); // Bật nhạc nền
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
@@ -81,12 +87,6 @@ void GSMenu::Init()
 	m_textGameName->SetSize(450, 75);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth())/2, SCREEN_HEIDHT / 2 - 180);
 	m_textGameName->LoadFromRenderText("ADVENTURE");
-
-	//bool isMusicOn = GameStateMachine::GetInstance()->IsMusicOn();
-	//GameStateMachine::GetInstance()->UpdateMusicState(isMusicOn);
-	m_musicBackground = std::make_shared<Sound>();
-	m_musicBackground->LoadSound("Data/Sounds/Menu.wav");
-	m_musicBackground->PlaySound();
 	
 }
 
@@ -98,14 +98,11 @@ void GSMenu::Exit()
 
 void GSMenu::Pause()
 {
-	m_musicBackground->StopSound();
-	// button close
 	
 }
 
 void GSMenu::Resume()
 {
-	m_musicBackground->PlaySound();
 }
 
 
