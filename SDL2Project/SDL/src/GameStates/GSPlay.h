@@ -3,6 +3,8 @@
 #include "GameObject/MouseButton.h"
 #include "Sound.h"
 #include "Player.h"
+#include "Item.h"
+#include "Enemy.h"
 class Sprite2D;
 class SpriteAnimation;
 class player;
@@ -32,16 +34,27 @@ private:
 	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
-	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
+
+    /*
+    * std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listObjAnimation;
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<SpriteAnimation> item;
+
+    */
+	
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Sound> m_soundEffectOnClick;
 
 
     std::list<std::shared_ptr<Player>>	m_listPlayer;
     std::shared_ptr<Player> m_player;
+
+    std::list<std::shared_ptr<Item>>  m_listItemAnimation;
+    std::shared_ptr<Item> m_item;
+
+    std::list<std::shared_ptr<Enemy>>  m_listEnemyAnimation;
+    std::shared_ptr<Enemy> m_enemy;
 
 	float time = 0.0f;
 	float m_Velocity = 10.0f;

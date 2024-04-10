@@ -36,6 +36,5 @@ public:
 	void		SetSize(int width, int height);
 	int GetWidth();
 	int GetHeight();
-	//void MoveLeft(float deltaTime);
-	//void MoveRight(float deltaTime);
+
 };
