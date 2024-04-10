@@ -42,22 +42,22 @@ void GSOption::Init()
     m_listButton.push_back(button);
 
     // Button Music
-    texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
+    texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
     btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-    btnMusic->SetSize(100, 100);
-    btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 170);
+    btnMusic->SetSize(150, 150);
+    btnMusic->Set2DPosition((SCREEN_WIDTH - btnMusic->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 150);
     btnMusic->SetOnClick([this]() {
         });
     m_listButton.push_back(btnMusic);
-    // Button link
-    texture = ResourceManagers::GetInstance()->GetTexture("btn_link.png");
-    std::shared_ptr<MouseButton> btnLink = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-    btnLink->Set2DPosition((SCREEN_WIDTH - btnLink->GetWidth()) / 2, SCREEN_HEIDHT / 2);
-    btnLink->SetSize(100, 100);
-    btnLink->SetOnClick([this]() {
+    // Button SFX
+    texture = ResourceManagers::GetInstance()->GetTexture("btn_sfx.png");
+    std::shared_ptr<MouseButton> btnSfx = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+    btnSfx->SetSize(150, 150);
+    btnSfx->Set2DPosition((SCREEN_WIDTH - btnSfx->GetWidth()) / 2 , SCREEN_HEIDHT / 2 );
+    btnSfx->SetOnClick([this]() {
         m_soundEffectClick->PlaySfx(0);
         });
-    m_listButton.push_back(btnLink);
+    m_listButton.push_back(btnSfx);
 
     //Camera::GetInstance()->SetTarget(obj);
     m_listAnimation.push_back(obj);
@@ -102,10 +102,10 @@ void GSOption::HandleTouchEvents(SDL_Event& e)
                 m_soundEffectClick->PlaySfx(0);
                 m_isMusicOn = !m_isMusicOn;
                 if (m_isMusicOn) {
-                    btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_on.tga"));
+                    btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_on.png"));
                 }
                 else {
-                    btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_off.tga"));
+                    btnMusic->SetTexture(ResourceManagers::GetInstance()->GetTexture("btn_music_off.png"));
                 }
 
                 // Toggle music state in MusicManager

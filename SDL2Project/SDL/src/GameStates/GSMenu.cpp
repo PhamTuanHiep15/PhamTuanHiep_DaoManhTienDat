@@ -37,7 +37,7 @@ void GSMenu::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_play.png");
 	std::shared_ptr<MouseButton> btnPlay = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	
-	btnPlay->SetSize(150, 150);
+	btnPlay->SetSize(200, 200);
 	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth())/2, (SCREEN_HEIDHT - btnPlay->GetHeight()) / 2);
 	btnPlay->SetOnClick([this]() {
 		m_soundEffectOnClick->PlaySfx(0);
@@ -46,7 +46,7 @@ void GSMenu::Init()
 	m_listButton.push_back(btnPlay);
 
 	// exit button
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_logout.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_exit.png");
 	std::shared_ptr<MouseButton> btnClose = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	//btnClose = std::make_shared<MouseButton>(texture);
 	btnClose->SetSize(100, 100);
@@ -58,7 +58,7 @@ void GSMenu::Init()
 	m_listButton.push_back(btnClose);
 
 	//Setting game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_settings.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_option.png");
 	std::shared_ptr<MouseButton> btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 
 	btnOption->SetSize(100, 100);
@@ -70,7 +70,7 @@ void GSMenu::Init()
 	m_listButton.push_back(btnOption);
 
 	//CREDIT game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_credit.png");
 	btnCredit = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnCredit->Set2DPosition((SCREEN_WIDTH - btnCredit->GetWidth()) / 2, SCREEN_HEIDHT / 2+100 );
 	btnCredit->SetSize(100, 100);
