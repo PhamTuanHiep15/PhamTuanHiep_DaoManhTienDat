@@ -12,4 +12,6 @@ public:
    
     void PlayerMoveLeft(float deltaTime);
     void PlayerMoveRight(float deltaTime);
+
+    int playerSpeed = PLAYER_SPEED_DEFAULT;
 };

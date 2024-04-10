@@ -80,13 +80,3 @@ int SpriteAnimation::GetHeight()
 {
 	return m_iHeight;
 }
-/*
-* void SpriteAnimation::MoveRight(float deltaTime)
-{
-	m_position.x += PLAYER_SPEED * deltaTime;
-}
-void SpriteAnimation::MoveLeft(float deltaTime)
-{
-	m_position.x -= PLAYER_SPEED * deltaTime;
-}
-*/

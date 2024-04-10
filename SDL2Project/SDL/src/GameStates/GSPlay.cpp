@@ -5,8 +5,10 @@
 #include "GameObject/SpriteAnimation.h"
 #include "GameObject/Camera.h"
 #include "KeyState.h"
-#include <random>
 #include "GameObject/Player.h"
+#include "GameObject/Enemy.h"
+#include "GameObject/Item.h"
+#include <random>
 
 GSPlay::GSPlay()
 {
@@ -41,18 +43,8 @@ void GSPlay::Init()
 		GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
-/*
-   // Animation
-    texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
-    obj = std::make_shared<SpriteAnimation>( texture, 1, 10, 1, 0.2f);
-    obj->SetFlip(SDL_FLIP_HORIZONTAL);
-    obj->SetSize(125, 100);
-    obj->Set2DPosition(80, 310);
-    //Camera::GetInstance()->SetTarget(obj);
-    m_listAnimation.push_back(obj);
 
-    m_KeyPress = 0;
-*/
+
     //player
     texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
     m_player = std::make_shared<Player>(texture, 1, 10, 1, 0.2f);
@@ -65,14 +57,14 @@ void GSPlay::Init()
     m_KeyPress = 0;
 
 
-	//item
+	//enemy
 	texture = ResourceManagers::GetInstance()->GetTexture("sneakLeft.png");
-	obj = std::make_shared<SpriteAnimation>(texture, 1, 4, 1, 0.2f);
-	obj->SetFlip(SDL_FLIP_HORIZONTAL);
-	obj->SetSize(70, 30);
-	obj->Set2DPosition(360, 380);
+	m_enemy = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
+    m_enemy->SetFlip(SDL_FLIP_HORIZONTAL);
+    m_enemy->SetSize(70, 30);
+    m_enemy->Set2DPosition(360, 380);
 	//Camera::GetInstance()->SetTarget(obj);
-	m_listObjAnimation.push_back(obj);
+	m_listEnemyAnimation.push_back(m_enemy);
 }
 
 void GSPlay::Exit()
@@ -191,7 +183,7 @@ void GSPlay::Update(float deltaTime)
 	std::uniform_int_distribution<> dis(0, 1000);
 	bool isMovingLeft = true;
 
-	for (auto it : m_listObjAnimation)
+	for (auto it : m_listEnemyAnimation)
 	{
 		int randomNumber = dis(gen);
 		if (randomNumber > 900)
@@ -215,7 +207,7 @@ void GSPlay::Update(float deltaTime)
 
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
-	obj->Update(deltaTime);
+	m_enemy->Update(deltaTime);
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
@@ -233,11 +225,8 @@ void GSPlay::Draw(SDL_Renderer* renderer)
     }
 
 //	obj->Draw(renderer);
-	for (auto it : m_listAnimation)
-	{
-		it->Draw(renderer);
-	}
-	for (auto it : m_listObjAnimation)
+
+	for (auto it : m_listEnemyAnimation)
 	{
 		it->Draw(renderer);
 	}
