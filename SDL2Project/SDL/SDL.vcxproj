@@ -172,6 +172,7 @@
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\MusicManager.cpp" />
+    <ClCompile Include="src\GameObject\Player.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
     <ClCompile Include="src\GameObject\Sound.cpp" />
     <ClCompile Include="src\GameObject\Sprite2D.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\MouseButton.h" />
     <ClInclude Include="src\GameObject\MusicManager.h" />
+    <ClInclude Include="src\GameObject\Player.h" />
     <ClInclude Include="src\GameObject\Renderer.h" />
     <ClInclude Include="src\GameObject\Sound.h" />
     <ClInclude Include="src\GameObject\Sprite2D.h" />

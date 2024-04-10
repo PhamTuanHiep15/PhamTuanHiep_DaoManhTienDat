@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseObject.h"
 #include <SDL_render.h>
+#include "Define.h"
 class TextureManager;
 class SpriteAnimation : public BaseObject{
 protected:
@@ -35,6 +36,6 @@ public:
 	void		SetSize(int width, int height);
 	int GetWidth();
 	int GetHeight();
-	void MoveLeft(float deltaTime);
-	void MoveRight(float deltaTime);
+	//void MoveLeft(float deltaTime);
+	//void MoveRight(float deltaTime);
 };

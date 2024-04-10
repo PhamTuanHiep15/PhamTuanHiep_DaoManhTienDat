@@ -6,6 +6,7 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 #include <random>
+#include "GameObject/Player.h"
 
 GSPlay::GSPlay()
 {
@@ -40,17 +41,29 @@ void GSPlay::Init()
 		GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
+/*
+   // Animation
+    texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
+    obj = std::make_shared<SpriteAnimation>( texture, 1, 10, 1, 0.2f);
+    obj->SetFlip(SDL_FLIP_HORIZONTAL);
+    obj->SetSize(125, 100);
+    obj->Set2DPosition(80, 310);
+    //Camera::GetInstance()->SetTarget(obj);
+    m_listAnimation.push_back(obj);
 
-   // Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
-	obj = std::make_shared<SpriteAnimation>( texture, 1, 10, 1, 0.2f);
-	obj->SetFlip(SDL_FLIP_HORIZONTAL);
-	obj->SetSize(125, 100);
-	obj->Set2DPosition(80, 310);
-	//Camera::GetInstance()->SetTarget(obj);
-	m_listAnimation.push_back(obj);
+    m_KeyPress = 0;
+*/
+    //player
+    texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
+    m_player = std::make_shared<Player>(texture, 1, 10, 1, 0.2f);
+    m_player->SetFlip(SDL_FLIP_HORIZONTAL);
+    m_player->SetSize(125, 100);
+    m_player->Set2DPosition(80, 310);
+    //Camera::GetInstance()->SetTarget(obj);
+    m_listPlayer.push_back(m_player);
 
-	m_KeyPress = 0;
+    m_KeyPress = 0;
+
 
 	//item
 	texture = ResourceManagers::GetInstance()->GetTexture("sneakLeft.png");
@@ -151,16 +164,16 @@ void GSPlay::Update(float deltaTime)
 		it->Update(deltaTime);
 	}
 
-	for (auto it : m_listAnimation)
+	for (auto it : m_listPlayer)
 	{
 		if (m_KeyPress & 1) 
 		{
-			it->MoveLeft(deltaTime);
+			it->PlayerMoveLeft(deltaTime);
 			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunLeft.png")); 
 		}
 		else if (m_KeyPress & (1 << 2)) 
 		{
-			it->MoveRight(deltaTime);
+			it->PlayerMoveRight(deltaTime);
 			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunRight.png"));
 		}
 		else if (m_KeyPress & (1 << 1))
@@ -185,13 +198,13 @@ void GSPlay::Update(float deltaTime)
 		{
 			if (isMovingLeft)
 			{
-				it->MoveRight(deltaTime);
+			//	it->MoveRight(deltaTime);
 				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakRight.png"));
 				printf("%d\n", randomNumber);
 			}
 			else
 			{
-				it->MoveLeft(deltaTime);
+			//	it->MoveLeft(deltaTime);
 				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakLeft.png"));
 				printf("%d\n", randomNumber);
 			}
@@ -213,6 +226,12 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	{
 		it->Draw(renderer);
 	}
+//  player
+    for (auto it : m_listPlayer)
+    {
+        it->Draw(renderer);
+    }
+
 //	obj->Draw(renderer);
 	for (auto it : m_listAnimation)
 	{

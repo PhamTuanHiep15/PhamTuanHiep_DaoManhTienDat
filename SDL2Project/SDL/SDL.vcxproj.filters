@@ -78,11 +78,17 @@
     <ClCompile Include="src\GameStates\GSPlay.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="GSOption.cpp">
-      <Filter>Source Files\GameState</Filter>
+    <ClCompile Include="src\GameObject\MusicManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GSCredit.cpp">
-      <Filter>Source Files\GameState</Filter>
+    <ClCompile Include="src\GameStates\GSCredit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates\GSOption.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Player.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,11 +155,17 @@
     <ClInclude Include="src\GameObject\KeyState.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GSOption.h">
-      <Filter>Source Files\GameState</Filter>
+    <ClInclude Include="src\GameObject\MusicManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GSCredit.h">
-      <Filter>Source Files\GameState</Filter>
+    <ClInclude Include="src\GameStates\GSCredit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameStates\GSOption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Player.h">
+      <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
