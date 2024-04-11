@@ -65,6 +65,15 @@ void GSPlay::Init()
     m_enemy->Set2DPosition(360, 380);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listEnemyAnimation.push_back(m_enemy);
+
+    //item
+    texture = ResourceManagers::GetInstance()->GetTexture("chest.png");
+    m_item = std::make_shared<Item>(texture, 1, 1, 1, 0.2f);
+    m_item->SetFlip(SDL_FLIP_HORIZONTAL);
+    m_item->SetSize(TILE_SIZE, TILE_SIZE);
+    m_item->Set2DPosition(200, 200);
+    //Camera::GetInstance()->SetTarget(obj);
+    m_listItemAnimation.push_back(m_item);
 }
 
 void GSPlay::Exit()
@@ -184,33 +193,16 @@ void GSPlay::Update(float deltaTime)
 
 	}
 	//sneak move
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(0, 1000);
-	bool isMovingLeft = true;
 
 	for (auto it : m_listEnemyAnimation)
 	{
-		int randomNumber = dis(gen);
-		if (randomNumber > 900)
-		{
-			if (isMovingLeft)
-			{
-			//	it->MoveRight(deltaTime);
-				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakRight.png"));
-				printf("%d\n", randomNumber);
-			}
-			else
-			{
-			//	it->MoveLeft(deltaTime);
-				it->SetTexture(ResourceManagers::GetInstance()->GetTexture("sneakLeft.png"));
-				printf("%d\n", randomNumber);
-			}
-			bool isMovingLeft = true;
-		}
 		it->Update(deltaTime);
 	}
 
+    for (auto it : m_listItemAnimation)
+    {
+        it->Update(deltaTime);
+    }
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
 	m_enemy->Update(deltaTime);
@@ -230,11 +222,17 @@ void GSPlay::Draw(SDL_Renderer* renderer)
         it->Draw(renderer);
     }
 
-//	obj->Draw(renderer);
+
 
 	for (auto it : m_listEnemyAnimation)
 	{
 		it->Draw(renderer);
 	}
+
+    for (auto it : m_listItemAnimation)
+    {
+        it->Draw(renderer);
+    }
+
 	
 }
