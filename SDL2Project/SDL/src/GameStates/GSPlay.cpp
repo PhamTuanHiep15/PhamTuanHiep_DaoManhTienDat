@@ -46,10 +46,10 @@ void GSPlay::Init()
 
 
     //player
-    texture = ResourceManagers::GetInstance()->GetTexture("_Idle.png");
-    m_player = std::make_shared<Player>(texture, 1, 10, 1, 0.2f);
+    texture = ResourceManagers::GetInstance()->GetTexture("down.png");
+    m_player = std::make_shared<Player>(texture, 1, 9, 1, 0.2f);
     m_player->SetFlip(SDL_FLIP_HORIZONTAL);
-    m_player->SetSize(125, 100);
+    m_player->SetSize(TILE_SIZE, TILE_SIZE);
     m_player->Set2DPosition(80, 310);
     //Camera::GetInstance()->SetTarget(obj);
     m_listPlayer.push_back(m_player);
@@ -158,21 +158,27 @@ void GSPlay::Update(float deltaTime)
 
 	for (auto it : m_listPlayer)
 	{
-		if (m_KeyPress & 1) 
-		{
-			it->PlayerMoveLeft(deltaTime);
-			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunLeft.png")); 
-		}
-		else if (m_KeyPress & (1 << 2)) 
-		{
-			it->PlayerMoveRight(deltaTime);
-			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_RunRight.png"));
-		}
-		else if (m_KeyPress & (1 << 1))
-		{
-			it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_Attack.png"));
-		}
-		else it->SetTexture(ResourceManagers::GetInstance()->GetTexture("_Idle.png"));
+        if (m_KeyPress & 1)
+        {
+            it->PlayerMoveLeft(deltaTime);
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("left.png"));
+        }
+        else if (m_KeyPress & (1 << 2))
+        {
+            it->PlayerMoveRight(deltaTime);
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("right.png"));
+        }
+        else if (m_KeyPress & (1 << 1))
+        {
+            it->PlayerMoveDown(deltaTime);
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("down.png"));
+        }
+        else if (m_KeyPress & (1 << 3))
+        {
+            it->PlayerMoveUp(deltaTime);
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
+        }
+
 
 		it->Update(deltaTime);
 

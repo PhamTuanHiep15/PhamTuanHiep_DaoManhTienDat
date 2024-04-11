@@ -18,3 +18,11 @@ void Player::PlayerMoveLeft(float deltaTime)
 {
     m_position.x -= playerSpeed * deltaTime;
 }
+void Player::PlayerMoveUp(float deltaTime)
+{
+    m_position.y -= playerSpeed * deltaTime;
+}
+void Player::PlayerMoveDown(float deltaTime)
+{
+    m_position.y += playerSpeed * deltaTime;
+}
