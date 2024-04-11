@@ -167,6 +167,7 @@ void GSPlay::Update(float deltaTime)
 
 	for (auto it : m_listPlayer)
 	{
+
         if (m_KeyPress & 1)
         {
             it->PlayerMoveLeft(deltaTime);
@@ -188,7 +189,8 @@ void GSPlay::Update(float deltaTime)
             it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
         }
 
-
+        SDL_Rect playerRect = it->GetRect();
+        printf("(%d ;%d)\n",playerRect.x, playerRect.y);
 		it->Update(deltaTime);
 
 	}

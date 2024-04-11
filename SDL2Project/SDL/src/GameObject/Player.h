@@ -15,5 +15,7 @@ public:
     void PlayerMoveUp(float deltaTime);
     void PlayerMoveDown(float deltaTime);
 
+    SDL_Rect GetRect();
+
     int playerSpeed = PLAYER_SPEED_DEFAULT;
 };
