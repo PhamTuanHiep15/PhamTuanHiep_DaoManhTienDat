@@ -170,6 +170,7 @@
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
     <ClCompile Include="src\GameObject\Camera.cpp" />
     <ClCompile Include="src\GameObject\CMath.cpp" />
+    <ClCompile Include="src\GameObject\Collision.cpp" />
     <ClCompile Include="src\GameObject\Enemy.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\MusicManager.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="src\GameObject\BaseObject.h" />
     <ClInclude Include="src\GameObject\Camera.h" />
     <ClInclude Include="src\GameObject\CMath.h" />
+    <ClInclude Include="src\GameObject\Collision.h" />
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\Enemy.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />

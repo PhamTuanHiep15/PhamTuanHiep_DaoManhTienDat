@@ -8,6 +8,7 @@
 #include "GameObject/Player.h"
 #include "GameObject/Enemy.h"
 #include "GameObject/Item.h"
+#include "Collision.h"
 #include <random>
 
 GSPlay::GSPlay()
@@ -190,8 +191,17 @@ void GSPlay::Update(float deltaTime)
         }
 
         SDL_Rect playerRect = it->GetRect();
-        printf("(%d ;%d)\n",playerRect.x, playerRect.y);
+        for (auto it : m_listItemAnimation)
+        {
+            SDL_Rect itemRect = it->GetRect();
+
+            bool col = Collision::CheckCollision(playerRect, itemRect);
+            if (col) printf("collision");
+        }
+ 
 		it->Update(deltaTime);
+
+      
 
 	}
 	//sneak move

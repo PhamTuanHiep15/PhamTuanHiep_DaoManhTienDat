@@ -80,3 +80,11 @@ int SpriteAnimation::GetHeight()
 {
 	return m_iHeight;
 }
+SDL_Rect SpriteAnimation::GetRect() {
+    SDL_Rect rect;
+    rect.x = m_position.x;
+    rect.y = m_position.y;
+    rect.w = TILE_SIZE;
+    rect.h = TILE_SIZE;
+    return rect;
+}

@@ -26,11 +26,5 @@ void Player::PlayerMoveDown(float deltaTime)
 {
     m_position.y += playerSpeed * deltaTime;
 }
-SDL_Rect Player::GetRect() {
-    SDL_Rect rect;
-    rect.x = m_position.x;
-    rect.y = m_position.y;
-    rect.w = TILE_SIZE;
-    rect.h = TILE_SIZE;
-    return rect;
-}
+
+
