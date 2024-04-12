@@ -32,16 +32,10 @@ public:
 
 private:
 	std::shared_ptr<Sprite2D>	m_background;
+    std::shared_ptr<Sprite2D>   m_ground; 
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 
-    /*
-    * std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
-	std::list<std::shared_ptr<SpriteAnimation>>	m_listObjAnimation;
-	std::shared_ptr<SpriteAnimation> obj;
-	std::shared_ptr<SpriteAnimation> item;
-
-    */
 	
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Sound> m_soundEffectOnClick;

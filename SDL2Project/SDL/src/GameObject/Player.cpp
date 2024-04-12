@@ -7,6 +7,7 @@ Player::Player(std::shared_ptr<TextureManager> texture, int spriteRow, int frame
     
 }
 
+
 void Player::updatePosition(float deltaX, float deltaY) {
 
 }
@@ -24,7 +25,14 @@ void Player::PlayerMoveUp(float deltaTime)
 }
 void Player::PlayerMoveDown(float deltaTime)
 {
-    m_position.y += playerSpeed * deltaTime;
 }
+void Player::PlayerJump() {
+    m_position.y -= 1;
+    if (canJump) {
+        m_velocityY = -jumpSpeed;
+        jumpCount--;
+        if (jumpCount == 0) canJump = false;
+    }
 
+};
 

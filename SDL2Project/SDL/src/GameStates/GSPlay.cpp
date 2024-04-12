@@ -27,13 +27,18 @@ void GSPlay::Init()
 	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play.jpg");
 
-	// background
-	
+    //backgrond
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play.jpg");
 	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
 	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
 	m_background->Set2DPosition(0, 0);
+
+    //ground
+    auto groundTexture = ResourceManagers::GetInstance()->GetTexture("ground.png");
+    m_ground = std::make_shared<Sprite2D>(groundTexture, SDL_FLIP_NONE);
+    m_ground->SetSize(SCREEN_WIDTH, TILE_SIZE); 
+    m_ground->Set2DPosition(0, SCREEN_HEIDHT - TILE_SIZE);
 
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
@@ -115,6 +120,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_UP:
 			m_KeyPress |= 1 << 3;
 			break;
+        case SDLK_SPACE:
+            m_KeyPress |= 1 << 4;
+            break;
 		default:
 			break;
 		}
@@ -137,6 +145,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_UP:
 			m_KeyPress ^= 1 << 3;
 			break;
+        case SDLK_SPACE:
+            m_KeyPress ^= 1 << 4;
+            break;
 		default:
 			break;
 		}
@@ -159,6 +170,7 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 {
 }
 
+
 void GSPlay::Update(float deltaTime)
 {
 	for (auto it : m_listButton)
@@ -168,6 +180,7 @@ void GSPlay::Update(float deltaTime)
 
 	for (auto it : m_listPlayer)
 	{
+       
 
         if (m_KeyPress & 1)
         {
@@ -189,6 +202,11 @@ void GSPlay::Update(float deltaTime)
             it->PlayerMoveUp(deltaTime);
             it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
         }
+        else if (m_KeyPress & (1 << 4))
+        {
+            it->PlayerJump();
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
+        }
 
         SDL_Rect playerRect = it->GetRect();
         for (auto it : m_listItemAnimation)
@@ -198,6 +216,10 @@ void GSPlay::Update(float deltaTime)
             bool col = Collision::CheckCollision(playerRect, itemRect);
             if (col) printf("collision");
         }
+
+        int num = it->jumpCount;
+
+        printf("%d %d %d\n", playerRect.x, playerRect.y, num);
  
 		it->Update(deltaTime);
 
@@ -220,9 +242,11 @@ void GSPlay::Update(float deltaTime)
 	m_enemy->Update(deltaTime);
 }
 
+
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
+    m_ground->Draw(renderer);
 	//m_score->Draw();
 	for (auto it : m_listButton)
 	{
@@ -246,5 +270,6 @@ void GSPlay::Draw(SDL_Renderer* renderer)
         it->Draw(renderer);
     }
 
+    
 	
 }

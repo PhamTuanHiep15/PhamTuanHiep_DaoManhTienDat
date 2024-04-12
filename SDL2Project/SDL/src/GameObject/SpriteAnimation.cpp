@@ -42,6 +42,17 @@ void SpriteAnimation::Update(float deltatime)
 		}
 		m_currentTicks -= m_frameTime;
 	}
+        //gravity
+        m_velocityY += GRAVITY * deltatime;
+
+        if (m_position.y + TILE_SIZE >= SCREEN_HEIDHT - TILE_SIZE) {
+            m_velocityY = 0;
+            m_position.y = SCREEN_HEIDHT - TILE_SIZE - TILE_SIZE;
+        }
+        else {
+            m_position.y += m_velocityY * deltatime;
+        }
+
 }
 
 void SpriteAnimation::Set2DPosition(float x, float y)
