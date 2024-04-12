@@ -31,7 +31,7 @@ void GSPlay::Init()
     //backgrond
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_GSPlay.png");
 	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
-	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
+	m_background->SetSize(1900,SCREEN_HEIDHT);
 	m_background->Set2DPosition(0, 0);
 
     //ground
@@ -52,19 +52,19 @@ void GSPlay::Init()
 
 
     //player
-    texture = ResourceManagers::GetInstance()->GetTexture("down.png");
-    m_player = std::make_shared<Player>(texture, 1, 9, 1, 0.2f);
+    texture = ResourceManagers::GetInstance()->GetTexture("girl_idle.png");
+    m_player = std::make_shared<Player>(texture, 1, 11, 1, 0.2f);
     m_player->SetFlip(SDL_FLIP_HORIZONTAL);
     m_player->SetSize(TILE_SIZE, TILE_SIZE);
-    m_player->Set2DPosition(80, 310);
-    //Camera::GetInstance()->SetTarget(obj);
+    m_player->Set2DPosition(80, SCREEN_HEIDHT - TILE_SIZE*2);
+    Camera::GetInstance()->SetTarget(m_player);
     m_listPlayer.push_back(m_player);
 
     m_KeyPress = 0;
 
 
 	//enemy
-	texture = ResourceManagers::GetInstance()->GetTexture("sneakLeft.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("sneakRight.png");
 	m_enemy = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
     m_enemy->SetFlip(SDL_FLIP_HORIZONTAL);
     m_enemy->SetSize(70, 30);
@@ -138,7 +138,7 @@ void GSPlay::Update(float deltaTime)
 	{
 
         it->HandleInput(m_KeyPress, deltaTime);
-
+        it->PlayerBar();
 
         SDL_Rect playerRect = it->GetRect();
         for (auto it : m_listItemAnimation)
@@ -150,6 +150,8 @@ void GSPlay::Update(float deltaTime)
         }
         if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && it->jumpCount < 100) it->jumpCount++;
         int num = it->jumpCount;
+        StaminaBar = it->manaBar;
+
 
         printf("%d %d %d\n", playerRect.x, playerRect.y, num);
  
@@ -158,10 +160,10 @@ void GSPlay::Update(float deltaTime)
       
 
 	}
-	//sneak move
-
+	//enemy
 	for (auto it : m_listEnemyAnimation)
 	{
+        it->enemyMove(deltaTime);
 		it->Update(deltaTime);
 	}
 
@@ -180,6 +182,10 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
     m_ground->Draw(renderer);
 	//m_score->Draw();
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); 
+    SDL_RenderFillRect(renderer, &StaminaBar);
+
 	for (auto it : m_listButton)
 	{
 		it->Draw(renderer);

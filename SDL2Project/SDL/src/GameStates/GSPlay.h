@@ -29,7 +29,9 @@ public:
 	void	HandleMouseMoveEvents(int x, int y) override;
 	void	Update(float deltaTime) override;
 	void	Draw(SDL_Renderer* renderer) override;
+
 	int m_KeyPress;
+
 
 private:
 	std::shared_ptr<Sprite2D>	m_background;
@@ -53,5 +55,6 @@ private:
 
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
+    SDL_Rect StaminaBar;
 };
 

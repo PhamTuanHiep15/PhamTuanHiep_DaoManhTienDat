@@ -16,12 +16,17 @@ public:
     void PlayerMoveDown(float deltaTime);
     void PlayerJump();
     void HandleInput(int keyPress, float deltaTime);
+    void PlayerBar();
 
 
 
     int playerSpeed = PLAYER_SPEED_DEFAULT;
     int jumpSpeed = 300;
     int jumpCount = STAMINA;
+    int lv = 1;
+    int hp = 200 + HP_DEFAULT * lv / 2;
     bool canJump = true;
+    SDL_Rect manaBar;
+    SDL_Rect hpBar;
 
 };

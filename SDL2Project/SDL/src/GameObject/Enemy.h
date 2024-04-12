@@ -9,6 +9,7 @@ public:
 
 
     void updatePosition(float deltaX, float deltaY);
+    void enemyMove(float deltatime);
 
 
 };

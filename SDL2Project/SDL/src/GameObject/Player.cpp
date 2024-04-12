@@ -34,28 +34,43 @@ void Player::PlayerJump() {
     }
     if (jumpCount == 0) canJump = false;
     else canJump = true;
-
 };
 
+
 void Player::HandleInput(int keyPress, float deltaTime) {
-    if (keyPress & 1) {
-        PlayerMoveLeft(deltaTime);
-        SetTexture(ResourceManagers::GetInstance()->GetTexture("left.png"));
-    }
-    else if (keyPress & (1 << 2)) {
-        PlayerMoveRight(deltaTime);
-        SetTexture(ResourceManagers::GetInstance()->GetTexture("right.png"));
-    }
-    else if (keyPress & (1 << 1)) {
-        PlayerMoveDown(deltaTime);
-        SetTexture(ResourceManagers::GetInstance()->GetTexture("down.png"));
-    }
-    else if (keyPress & (1 << 3)) {
-        PlayerMoveUp(deltaTime);
-        SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
-    }
-    else if (keyPress & (1 << 4)) {
-        PlayerJump();
-        SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
-    }
+
+    if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4) ) {
+        if (keyPress & 1) {
+            PlayerMoveLeft(deltaTime);
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_run_left.png"));
+        }
+        else if (keyPress & (1 << 2)) {
+            PlayerMoveRight(deltaTime);
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_run_right.png"));
+        }
+
+        /*
+        *  else if (keyPress & (1 << 1)) {
+            PlayerMoveDown(deltaTime);
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("down.png"));
+        }
+        else if (keyPress & (1 << 3)) {
+            PlayerMoveUp(deltaTime);
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
+        }
+        */
+
+        else if (keyPress & (1 << 4)) {
+            PlayerJump();
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_jump.png"));
+        }
+    } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_falling.png"));
+   
+    else SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_idle.png"));
+}
+void Player::PlayerBar() {
+    manaBar.x = 10;
+    manaBar.y = 10;
+    manaBar.w = 2*jumpCount;
+    manaBar.h = 10;
 }
