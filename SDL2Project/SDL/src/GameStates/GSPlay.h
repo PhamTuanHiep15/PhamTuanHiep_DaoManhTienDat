@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Item.h"
 #include "Enemy.h"
+#include "InputHandler.h"
 class Sprite2D;
 class SpriteAnimation;
 class player;

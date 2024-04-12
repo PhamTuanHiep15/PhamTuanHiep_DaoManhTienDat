@@ -172,6 +172,7 @@
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\Collision.cpp" />
     <ClCompile Include="src\GameObject\Enemy.cpp" />
+    <ClCompile Include="src\GameObject\InputHandler.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\MusicManager.cpp" />
     <ClCompile Include="src\GameObject\Item.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="src\GameObject\Collision.h" />
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\Enemy.h" />
+    <ClInclude Include="src\GameObject\InputHandler.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\MouseButton.h" />
     <ClInclude Include="src\GameObject\MusicManager.h" />

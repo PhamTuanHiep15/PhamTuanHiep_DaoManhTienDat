@@ -96,63 +96,19 @@ void GSPlay::Resume()
 }
 
 
-void GSPlay::HandleEvents()
-{
+
+void GSPlay::HandleEvents() {
+    SDL_Event e;
+    while (SDL_PollEvent(&e)) {
+        HandleKeyEvents(e);
+        HandleTouchEvents(e);
+    }
 }
 
-void GSPlay::HandleKeyEvents(SDL_Event& e)
-{
-	//If a key was pressed
-	if (e.type == SDL_KEYDOWN )//&& e.key.repeat == 0) //For e.key.repeat it's because key repeat is enabled by default and if you press and hold a key it will report multiple key presses. That means we have to check if the key press is the first one because we only care when the key was first pressed.
-	{
-		//Adjust the velocity
-		switch (e.key.keysym.sym)                                                                                            
-		{                                                                                                                     
-		case SDLK_LEFT:
-			m_KeyPress |= 1;
-			break;
-		case SDLK_DOWN:
-			m_KeyPress |= 1 << 1;
-			break;
-		case SDLK_RIGHT:
-			m_KeyPress |= 1 << 2;
-			break;
-		case SDLK_UP:
-			m_KeyPress |= 1 << 3;
-			break;
-        case SDLK_SPACE:
-            m_KeyPress |= 1 << 4;
-            break;
-		default:
-			break;
-		}
-	}
-	////Key Up
-	else if (e.type == SDL_KEYUP )//&& e.key.repeat == 0)
-	{
-		//Adjust the velocity
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			m_KeyPress ^= 1;
-			break;
-		case SDLK_DOWN:
-			m_KeyPress ^= 1 << 1;
-			break;
-		case SDLK_RIGHT:
-			m_KeyPress ^= 1 << 2;
-			break;
-		case SDLK_UP:
-			m_KeyPress ^= 1 << 3;
-			break;
-        case SDLK_SPACE:
-            m_KeyPress ^= 1 << 4;
-            break;
-		default:
-			break;
-		}
-	}
+void GSPlay::HandleKeyEvents(SDL_Event& e) {
+    InputHandler::HandleKeyEvents(e, m_KeyPress);
 }
+
 
 void GSPlay::HandleTouchEvents(SDL_Event& e)
 {
@@ -181,31 +137,8 @@ void GSPlay::Update(float deltaTime)
 	for (auto it : m_listPlayer)
 	{
 
-        if (m_KeyPress & 1)
-        {
-            it->PlayerMoveLeft(deltaTime);
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("left.png"));
-        }
-        else if (m_KeyPress & (1 << 2))
-        {
-            it->PlayerMoveRight(deltaTime);
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("right.png"));
-        }
-        else if (m_KeyPress & (1 << 1))
-        {
-            it->PlayerMoveDown(deltaTime);
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("down.png"));
-        }
-        else if (m_KeyPress & (1 << 3))
-        {
-            it->PlayerMoveUp(deltaTime);
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
-        }
-        else if (m_KeyPress & (1 << 4))
-        {
-            it->PlayerJump();
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
-        }
+        it->HandleInput(m_KeyPress, deltaTime);
+
 
         SDL_Rect playerRect = it->GetRect();
         for (auto it : m_listItemAnimation)
@@ -215,7 +148,7 @@ void GSPlay::Update(float deltaTime)
             bool col = Collision::CheckCollision(playerRect, itemRect);
             if (col) printf("collision");
         }
-        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE) it->jumpCount++;
+        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && it->jumpCount < 100) it->jumpCount++;
         int num = it->jumpCount;
 
         printf("%d %d %d\n", playerRect.x, playerRect.y, num);

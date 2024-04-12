@@ -37,3 +37,25 @@ void Player::PlayerJump() {
 
 };
 
+void Player::HandleInput(int keyPress, float deltaTime) {
+    if (keyPress & 1) {
+        PlayerMoveLeft(deltaTime);
+        SetTexture(ResourceManagers::GetInstance()->GetTexture("left.png"));
+    }
+    else if (keyPress & (1 << 2)) {
+        PlayerMoveRight(deltaTime);
+        SetTexture(ResourceManagers::GetInstance()->GetTexture("right.png"));
+    }
+    else if (keyPress & (1 << 1)) {
+        PlayerMoveDown(deltaTime);
+        SetTexture(ResourceManagers::GetInstance()->GetTexture("down.png"));
+    }
+    else if (keyPress & (1 << 3)) {
+        PlayerMoveUp(deltaTime);
+        SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
+    }
+    else if (keyPress & (1 << 4)) {
+        PlayerJump();
+        SetTexture(ResourceManagers::GetInstance()->GetTexture("up.png"));
+    }
+}

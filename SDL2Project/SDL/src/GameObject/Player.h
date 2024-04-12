@@ -15,9 +15,11 @@ public:
     void PlayerMoveUp(float deltaTime);
     void PlayerMoveDown(float deltaTime);
     void PlayerJump();
+    void HandleInput(int keyPress, float deltaTime);
+
+
 
     int playerSpeed = PLAYER_SPEED_DEFAULT;
-
     int jumpSpeed = 300;
     int jumpCount = STAMINA;
     bool canJump = true;
