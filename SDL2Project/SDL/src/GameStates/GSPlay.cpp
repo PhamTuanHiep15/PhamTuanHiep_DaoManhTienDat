@@ -180,7 +180,6 @@ void GSPlay::Update(float deltaTime)
 
 	for (auto it : m_listPlayer)
 	{
-       
 
         if (m_KeyPress & 1)
         {
@@ -216,7 +215,7 @@ void GSPlay::Update(float deltaTime)
             bool col = Collision::CheckCollision(playerRect, itemRect);
             if (col) printf("collision");
         }
-
+        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE) it->jumpCount++;
         int num = it->jumpCount;
 
         printf("%d %d %d\n", playerRect.x, playerRect.y, num);

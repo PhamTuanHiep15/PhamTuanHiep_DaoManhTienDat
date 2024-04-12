@@ -19,7 +19,7 @@ public:
     int playerSpeed = PLAYER_SPEED_DEFAULT;
 
     int jumpSpeed = 300;
-    int jumpCount = STAMINA*100;
+    int jumpCount = STAMINA;
     bool canJump = true;
 
 };

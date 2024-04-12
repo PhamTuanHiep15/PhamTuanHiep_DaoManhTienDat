@@ -27,12 +27,13 @@ void Player::PlayerMoveDown(float deltaTime)
 {
 }
 void Player::PlayerJump() {
-    m_position.y -= 1;
+    m_position.y -= 1;  
     if (canJump) {
         m_velocityY = -jumpSpeed;
         jumpCount--;
-        if (jumpCount == 0) canJump = false;
     }
+    if (jumpCount == 0) canJump = false;
+    else canJump = true;
 
 };
 
