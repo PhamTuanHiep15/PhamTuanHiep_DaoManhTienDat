@@ -36,6 +36,15 @@ void Player::PlayerJump() {
     else canJump = true;
 };
 
+SDL_Rect Player::GetRect() {
+    SDL_Rect rect;
+    rect.x = m_position.x+TILE_SIZE/3;
+    rect.y = m_position.y;
+    rect.w = TILE_SIZE/3;
+    rect.h = TILE_SIZE;
+    return rect;
+}
+
 
 void Player::HandleInput(int keyPress, float deltaTime) {
 
@@ -69,8 +78,18 @@ void Player::HandleInput(int keyPress, float deltaTime) {
     else SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_idle.png"));
 }
 void Player::PlayerBar() {
+    //manaBar
     manaBar.x = 10;
     manaBar.y = 10;
     manaBar.w = 2*jumpCount;
     manaBar.h = 10;
+    
+    //hpBar
+    hpBar.x = 10;
+    hpBar.y = 30;
+    hpBar.w = 300;
+    hpBar.h = 20;
+
+
+
 }

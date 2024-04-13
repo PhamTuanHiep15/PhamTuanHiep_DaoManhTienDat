@@ -31,13 +31,13 @@ void GSPlay::Init()
     //backgrond
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_GSPlay.png");
 	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
-	m_background->SetSize(1900,SCREEN_HEIDHT);
+	m_background->SetSize(MAP_WIDTH,MAP_HEIDTH);
 	m_background->Set2DPosition(0, 0);
 
     //ground
     auto groundTexture = ResourceManagers::GetInstance()->GetTexture("ground.png");
     m_ground = std::make_shared<Sprite2D>(groundTexture, SDL_FLIP_NONE);
-    m_ground->SetSize(SCREEN_WIDTH, TILE_SIZE); 
+    m_ground->SetSize(SCREEN_WIDTH*4, TILE_SIZE); 
     m_ground->Set2DPosition(0, SCREEN_HEIDHT - TILE_SIZE);
 
 	// button close

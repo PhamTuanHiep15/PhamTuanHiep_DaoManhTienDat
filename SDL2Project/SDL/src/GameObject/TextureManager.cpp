@@ -85,9 +85,20 @@ void TextureManager::setColor(Uint8 red, Uint8 green, Uint8 blue)
 
 void TextureManager::Render(int x, int y, int width, int height, double angle, SDL_RendererFlip flip)
 {
+
 	SDL_Rect srcRect = {0 ,0 , width, height };
-	SDL_Rect dstRect = { x , y , width, height };
-	SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+    Vector2 cam = Camera::GetInstance()->GetPosition()*0.5;
+    if (width == MAP_WIDTH) {
+        SDL_Rect dstRect = { x - cam.x, y - cam.y, width, height };
+        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+    }else if (width > MAP_WIDTH) {
+        SDL_Rect dstRect = { x - cam.x*2, y - cam.y*2, width, height };
+        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+    }
+    else {
+        SDL_Rect dstRect = { x , y , width, height };
+        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+    }
 	
 }
 

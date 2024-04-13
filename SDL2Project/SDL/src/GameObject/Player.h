@@ -15,6 +15,7 @@ public:
     void PlayerMoveUp(float deltaTime);
     void PlayerMoveDown(float deltaTime);
     void PlayerJump();
+    SDL_Rect GetRect();
     void HandleInput(int keyPress, float deltaTime);
     void PlayerBar();
 
