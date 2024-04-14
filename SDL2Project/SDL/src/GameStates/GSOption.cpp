@@ -12,6 +12,7 @@
 GSOption::GSOption() : m_soundEffectClick(std::make_shared<Sound>())
 {
     m_soundEffectClick->LoadSfx("Data/Sounds/click.wav");
+    MusicManager::GetInstance()->PlayMusic("Data/Sounds/Menu.wav");
 }
 
 
@@ -109,8 +110,7 @@ void GSOption::HandleTouchEvents(SDL_Event& e)
                 }
 
                 // Toggle music state in MusicManager
-                MusicManager musicManager;
-                musicManager.toggleMusic(m_isMusicOn);
+                MusicManager::GetInstance()->toggleMusic(m_isMusicOn);
             }
         }
     }

@@ -18,11 +18,7 @@ void GSMenu::Init()
 	m_soundEffectOnClick = std::make_shared<Sound>();
 	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
 
-	// Khởi tạo MusicManager
-	musicManager = std::make_shared<MusicManager>();
-	// Thiết lập nhạc nền cho GSMenu
-	musicManager->setBackgroundMusic("Data/Sounds/Menu.wav");
-	musicManager->toggleMusic(true); // Bật nhạc nền
+	
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu.png");
