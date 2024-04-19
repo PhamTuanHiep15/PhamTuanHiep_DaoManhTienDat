@@ -6,10 +6,13 @@
 #include "GameManager/Singleton.h"
 #include "Sprite2D.h"
 #include <vector>
+#include<map>
 class TextureManager  
 {
 private:
 	SDL_Texture* m_Texture;
+    std::map<std::string, SDL_Texture*> m_TextureMap;
+    static TextureManager* s_Instance;
 public:
 	TextureManager();
 	~TextureManager();
@@ -32,6 +35,13 @@ public:
 	//Creates image from font string
 	bool LoadFromRendererText(TTF_Font* font,  std::string& textureText, SDL_Color textColor);
 	//SDL_Texture* GetTexture();
+
+
+    /*****************************************************/
+
+    static TextureManager* GetInstance() { return s_Instance = (s_Instance != nullptr) ? s_Instance : new TextureManager(); }
+    bool Load(std::string id, std::string filename);
+    void RenderTile(std::string tilesetID, int tileSize, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 };
 

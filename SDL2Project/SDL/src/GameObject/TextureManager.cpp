@@ -13,6 +13,24 @@ TextureManager::~TextureManager()
 	Free();
 }
 
+TextureManager* TextureManager::s_Instance = nullptr;
+
+bool TextureManager::Load(std::string id, std::string filename) {
+    SDL_Surface* surface = IMG_Load(filename.c_str());
+    if (surface == nullptr) {
+        SDL_Log("Failed to load texture");
+        return false;
+    }
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(Renderer::GetInstance()->GetRenderer(), surface);
+    if (texture == nullptr) {
+        SDL_Log(" failed to create");
+        return false;
+    }
+
+    m_TextureMap[id] = texture;
+    return true;
+}
+
 void TextureManager::Free()
 {
 	for (auto it = m_ListTextures.begin(); it != m_ListTextures.end(); ++it)
@@ -85,30 +103,36 @@ void TextureManager::setColor(Uint8 red, Uint8 green, Uint8 blue)
 
 void TextureManager::Render(int x, int y, int width, int height, double angle, SDL_RendererFlip flip)
 {
+    SDL_Rect srcRect = { 0, 0, width, height };
+    Vector2 cam = Camera::GetInstance()->GetPosition() * 0.25;
+    SDL_Rect dstRect = { x, y, width, height };
 
-	SDL_Rect srcRect = {0 ,0 , width, height };
-    Vector2 cam = Camera::GetInstance()->GetPosition()*0.5;
     if (width == MAP_WIDTH) {
-        SDL_Rect dstRect = { x - cam.x, y - cam.y, width, height };
-        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
-    }else if (width > MAP_WIDTH) {
-        SDL_Rect dstRect = { x - cam.x*2, y - cam.y*2, width, height };
-        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+        dstRect.x -= cam.x;
+        dstRect.y -= cam.y;
     }
-    else {
-        SDL_Rect dstRect = { x , y , width, height };
-        SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+    else if (width > MAP_WIDTH) {
+        dstRect.x -= cam.x * 4;
+        dstRect.y -= cam.y * 4;
     }
-	
+
+    SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
+}
+
+void TextureManager::RenderTile(std::string tilesetID, int tileSize, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip)
+{
+    SDL_Rect srcRect = { x, y, tileSize, tileSize };
+    SDL_Rect dstRect = { tileSize * frame, tileSize * (row - 1), tileSize, tileSize };
+    SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_TextureMap[tilesetID], &srcRect, &dstRect, 0, nullptr, flip);
 }
 
 void TextureManager::RenderFrame(int x, int y, int width, int height, int spriteRow, int currentframe, int framecount, int numAction, double angle, SDL_RendererFlip flip)
 {
-	float srcWidth = originWidth/ framecount;
-	float srcHeight = originHeight/numAction;
-	SDL_Rect srcRect = { srcWidth * currentframe, srcHeight * (spriteRow - 1), srcWidth, srcHeight }; //pointer to source rect(the area and position where you get the sprite on the texture).
-	SDL_Rect dstRect = { x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, width , height }; // pointer to dest rect(the area and position on the renderer you are going to draw).
-	SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, &srcRect, &dstRect, angle, nullptr, flip);
+    float srcWidth = originWidth / framecount;
+    float srcHeight = originHeight / numAction;
+    SDL_Rect srcRect = { srcWidth * currentframe, srcHeight * (spriteRow - 1), srcWidth, srcHeight };
+    SDL_Rect dstRect = { x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, width, height };
+    SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, &srcRect, &dstRect, angle, nullptr, flip);
 }
 
 void TextureManager::SetBlendMode(SDL_BlendMode blending)
@@ -153,4 +177,5 @@ bool TextureManager::LoadFromRendererText(TTF_Font* font, std::string& textureTe
 	}
 	return m_Texture!= NULL;
 }
+
 

@@ -18,6 +18,7 @@ public:
     SDL_Rect GetRect();
     void HandleInput(int keyPress, float deltaTime);
     void PlayerBar();
+    void Update(float deltatime) override;
 
 
 

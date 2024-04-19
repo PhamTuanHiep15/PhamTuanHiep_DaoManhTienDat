@@ -6,6 +6,7 @@
 #include "Item.h"
 #include "Enemy.h"
 #include "InputHandler.h"
+#include "GameMap.h"
 class Sprite2D;
 class SpriteAnimation;
 class player;
@@ -31,6 +32,8 @@ public:
 	void	Draw(SDL_Renderer* renderer) override;
 
 	int m_KeyPress;
+
+    GameMap* m_LevelMap;
 
 
 private:

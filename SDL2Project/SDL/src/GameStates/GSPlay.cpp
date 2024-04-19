@@ -10,6 +10,8 @@
 #include "GameObject/Item.h"
 #include "Collision.h"
 #include <random>
+#include "MapParser.h"
+#include <iostream>
 
 GSPlay::GSPlay()
 {
@@ -28,6 +30,7 @@ void GSPlay::Init()
 
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 
+
     //backgrond
 	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_GSPlay.png");
 	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
@@ -39,6 +42,12 @@ void GSPlay::Init()
     m_ground = std::make_shared<Sprite2D>(groundTexture, SDL_FLIP_NONE);
     m_ground->SetSize(SCREEN_WIDTH*4, TILE_SIZE); 
     m_ground->Set2DPosition(0, SCREEN_HEIDHT - TILE_SIZE);
+
+    //map
+    if (MapParser::GetInstance()->Load()) {
+        std::cout << "Failed to load map......." << std::endl;
+    }
+    m_LevelMap = MapParser::GetInstance()->GetMap("level1");
 
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
@@ -129,36 +138,39 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
+    m_LevelMap->Update();
+
 	for (auto it : m_listButton)
 	{
 		it->Update(deltaTime);
 	}
 
-	for (auto it : m_listPlayer)
+	for (auto player : m_listPlayer)
 	{
 
-        it->HandleInput(m_KeyPress, deltaTime);
-        it->PlayerBar();
+        player->HandleInput(m_KeyPress, deltaTime);
+        player->PlayerBar();
 
-        SDL_Rect playerRect = it->GetRect();
+        SDL_Rect playerRect = player->GetRect();
         for (auto it : m_listItemAnimation)
         {
             SDL_Rect itemRect = it->GetRect();
 
             bool col = Collision::CheckCollision(playerRect, itemRect);
-            if (col) printf("collision");
+            if (col) { 
+                printf("collision"); 
+
+                
+            }
         }
-        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && it->jumpCount < 100) it->jumpCount++;
-        int num = it->jumpCount;
-        StaminaBar = it->manaBar;
+        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && player->jumpCount < 100) player->jumpCount++;
+        int num = player->jumpCount;
+        StaminaBar = player->manaBar;
 
 
         printf("%d %d %d\n", playerRect.x, playerRect.y, num);
  
-		it->Update(deltaTime);
-
-      
-
+		player->Update(deltaTime);
 	}
 	//enemy
 	for (auto it : m_listEnemyAnimation)
@@ -182,6 +194,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
     m_ground->Draw(renderer);
 	//m_score->Draw();
+    m_LevelMap->Render();
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); 
     SDL_RenderFillRect(renderer, &StaminaBar);

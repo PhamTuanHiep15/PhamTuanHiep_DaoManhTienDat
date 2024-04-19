@@ -22,6 +22,15 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{b61357b4-8507-48e7-95d0-cba6485693e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\Map">
+      <UniqueIdentifier>{d1c15c36-f81c-44cc-8e2d-50934fb20ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vendor">
+      <UniqueIdentifier>{33d5a7b4-98a9-4de6-8b32-aadabd430cf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vendor\TinyXML">
+      <UniqueIdentifier>{3201da6d-8ce1-456a-9d29-b4ff9dbde0a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameObject\Camera.cpp">
@@ -78,15 +87,6 @@
     <ClCompile Include="src\GameStates\GSPlay.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObject\MusicManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameStates\GSCredit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameStates\GSOption.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameObject\Player.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -101,6 +101,33 @@
     </ClCompile>
     <ClCompile Include="src\GameObject\InputHandler.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\TinyXML\tinystr.cpp">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\TinyXML\tinyxml.cpp">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\TinyXML\tinyxmlerror.cpp">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vendor\TinyXML\tinyxmlparser.cpp">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Map\MapParser.cpp">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Map\TileLayer.cpp">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates\GSCredit.cpp">
+      <Filter>Source Files\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates\GSOption.cpp">
+      <Filter>Source Files\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\MusicManager.cpp">
+      <Filter>Source Files\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,15 +194,6 @@
     <ClInclude Include="src\GameObject\KeyState.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObject\MusicManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameStates\GSCredit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameStates\GSOption.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameObject\Player.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
@@ -191,5 +209,48 @@
     <ClInclude Include="src\GameObject\InputHandler.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\TinyXML\tinystr.h">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vendor\TinyXML\tinyxml.h">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Map\GameMap.h">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Map\Layer.h">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Map\MapParser.h">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Map\TileLayer.h">
+      <Filter>Source Files\GameObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameStates\GSCredit.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameStates\GSOption.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\MusicManager.h">
+      <Filter>Source Files\GameManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\Vendor\TinyXML\CMakeLists.txt">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </Text>
+    <Text Include="src\Vendor\TinyXML\readme.txt">
+      <Filter>Source Files\Vendor\TinyXML</Filter>
+    </Text>
   </ItemGroup>
 </Project>

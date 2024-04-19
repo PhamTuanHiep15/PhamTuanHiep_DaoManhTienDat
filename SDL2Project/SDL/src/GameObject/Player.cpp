@@ -89,7 +89,25 @@ void Player::PlayerBar() {
     hpBar.y = 30;
     hpBar.w = 300;
     hpBar.h = 20;
+}
 
+void Player::Update(float deltatime) {
+    m_currentTicks += deltatime;
+    if (m_currentTicks >= m_frameTime) {
+        m_currentFrame++;
+        if (m_currentFrame >= m_frameCount) {
+            m_currentFrame = 0;
+        }
+        m_currentTicks -= m_frameTime;
+    }
+    //gravity
+    m_velocityY += GRAVITY * deltatime;
 
-
+    if (m_position.y + TILE_SIZE >= SCREEN_HEIDHT - TILE_SIZE) {
+        m_velocityY = 0;
+        m_position.y = SCREEN_HEIDHT - TILE_SIZE - TILE_SIZE;
+    }
+    else {
+        m_position.y += m_velocityY * deltatime;
+    }
 }
