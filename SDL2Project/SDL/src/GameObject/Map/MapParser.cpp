@@ -64,38 +64,7 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     tileset.Source = image->Attribute("source");
     return tileset;
 }
-/*
-* TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tilesets, int tilesize, int rowcount, int colcount)
-{
-    TiXmlElement* data;
-    for (TiXmlElement* e = xmlLayer->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
-        if (e->Value() == std::string("data")) {
-            data = e;
-            break;
-        }
-    }
 
-
-    std::string matrix(data->GetText());
-    std::istringstream iss(matrix);
-    std::string id;
-
-    TileMap tilemap(rowcount, std::vector<int>(colcount, 0));
-    for (int row = 0; row = rowcount; row++) {
-        for (int col = 0; col = colcount; col++) {
-            getline(iss, id, ',');
-            std::stringstream convertor(id);
-            convertor >> tilemap[row][col];
-
-            if (!iss.good())
-                break;
-        }
-    }
-
-    return (new TileLayer(tilesize, rowcount, colcount, tilemap, tilesets));
-}
-
-*/
 
 TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tilesets, int tilesize, int rowcount, int colcount)
 {
@@ -106,27 +75,29 @@ TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tileset
             break;
         }
     }
-  /* if (data == nullptr) {
-        return nullptr;
-    }*/
+
+
    
 
     std::string matrix(data->GetText());
     std::istringstream iss(matrix);
     std::string id;
+    int x;
 
     TileMap tilemap(rowcount, std::vector<int>(colcount, 0));
     for (int row = 0; row < rowcount; row++) {
         for (int col = 0; col < colcount; col++) { 
             getline(iss, id, ',');
             std::stringstream convertor(id);
-            convertor >> tilemap[row][col];
 
+            convertor >> tilemap[row][col];
+            
+            x = tilemap[row][col];
             if (!iss.good())
                 break;
         }
     }
-
+   
     return (new TileLayer(tilesize, rowcount, colcount, tilemap, tilesets));
 }
 

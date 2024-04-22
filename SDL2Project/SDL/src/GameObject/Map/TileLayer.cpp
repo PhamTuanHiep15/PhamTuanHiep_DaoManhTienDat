@@ -14,8 +14,8 @@ TileLayer::TileLayer(int tilesize, int colcount, int rowcount, TileMap tilemap, 
 }
 
 void TileLayer::Render() {
-    for (unsigned int i = 0; i < m_RowCount; i++) {
-        for (unsigned int j = 0; j < m_ColCount; j++) {
+    for (unsigned int i = 0; i < m_ColCount; i++) {
+        for (unsigned int j = 0; j < m_RowCount; j++) {
             int tileID = m_Tilemap[i][j];
 
             if (tileID == 0) continue;
@@ -33,15 +33,10 @@ void TileLayer::Render() {
                 }
 
                 Tileset ts = m_Tilesets[index];
-                int tileRow = tileID / ts.ColCount;
-                int tileCol = tileID - tileRow * ts.ColCount - 1;
-
-                if (tileID % ts.ColCount) {
-                    tileRow++;
-                    tileCol = ts.ColCount - 1;
-
-                }
-                TextureManager::GetInstance()->RenderTile(ts.Name, ts.TileSize, j * ts.TileSize, i * ts.TileSize, tileRow, tileCol, 1, SDL_FLIP_NONE);
+                int tileRow = ((tileID-1) % ts.ColCount)* ts.TileSize;
+                int tileCol = ((tileID-1) / ts.ColCount) * ts.TileSize;
+                TextureManager::GetInstance()->RenderTile(ts.Name, ts.TileSize, tileRow, tileCol, j * ts.TileSize, i * ts.TileSize, 1, SDL_FLIP_NONE);
+                printf("%d %d\n",tileRow/ ts.TileSize,tileCol/ ts.TileSize);
             }
         }
     }

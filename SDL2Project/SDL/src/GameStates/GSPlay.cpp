@@ -49,6 +49,7 @@ void GSPlay::Init()
     }
     m_LevelMap = MapParser::GetInstance()->GetMap("level1");
 
+
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
@@ -192,7 +193,7 @@ void GSPlay::Update(float deltaTime)
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
-    m_ground->Draw(renderer);
+
 	//m_score->Draw();
     m_LevelMap->Render();
 

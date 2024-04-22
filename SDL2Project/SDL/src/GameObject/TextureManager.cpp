@@ -119,11 +119,12 @@ void TextureManager::Render(int x, int y, int width, int height, double angle, S
     SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
 }
 
-void TextureManager::RenderTile(std::string tilesetID, int tileSize, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip)
+void TextureManager::RenderTile(std::string tilesetID, int tileSize, int x, int y, int width, int height, int row, SDL_RendererFlip flip)
 {
+    Vector2 cam = Camera::GetInstance()->GetPosition();
     SDL_Rect srcRect = { x, y, tileSize, tileSize };
-    SDL_Rect dstRect = { tileSize * frame, tileSize * (row - 1), tileSize, tileSize };
-    SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_TextureMap[tilesetID], &srcRect, &dstRect, 0, nullptr, flip);
+    SDL_Rect dstRect = { width- cam.x, height-cam.y, tileSize, tileSize };
+    SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_TextureMap[tilesetID], &srcRect, &dstRect, 0, 0, flip);
 }
 
 void TextureManager::RenderFrame(int x, int y, int width, int height, int spriteRow, int currentframe, int framecount, int numAction, double angle, SDL_RendererFlip flip)
