@@ -32,15 +32,17 @@ public:
 	void	Draw(SDL_Renderer* renderer) override;
 
 	int m_KeyPress;
+    
 
     GameMap* m_LevelMap;
-    static GSPlay* GetInstance() {
+     static GSPlay* GetInstance() {
         if (s_Instance == nullptr) {
             s_Instance = new GSPlay();
         }
         return s_Instance;
     }
-    static GSPlay* s_Instance;
+  
+   
 
 private:
 	std::shared_ptr<Sprite2D>	m_background;
@@ -65,5 +67,6 @@ private:
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
     SDL_Rect StaminaBar;
+    static GSPlay* s_Instance;
 };
 

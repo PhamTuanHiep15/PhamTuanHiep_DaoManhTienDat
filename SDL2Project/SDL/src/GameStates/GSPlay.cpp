@@ -65,8 +65,8 @@ void GSPlay::Init()
     texture = ResourceManagers::GetInstance()->GetTexture("girl_idle.png");
     m_player = std::make_shared<Player>(texture, 1, 11, 1, 0.2f);
     m_player->SetFlip(SDL_FLIP_HORIZONTAL);
-    m_player->SetSize(TILE_SIZE, TILE_SIZE);
-    m_player->Set2DPosition(80, SCREEN_HEIDHT - TILE_SIZE*2);
+    m_player->SetSize(TILE_SIZE*1.25, TILE_SIZE*1.25);
+    m_player->Set2DPosition(30,/* SCREEN_HEIDHT - TILE_SIZE * 2*/ 250);
     Camera::GetInstance()->SetTarget(m_player);
     m_listPlayer.push_back(m_player);
 
@@ -164,7 +164,7 @@ void GSPlay::Update(float deltaTime)
                 
             }
         }
-        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && player->jumpCount < 100) player->jumpCount++;
+        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && player->jumpCount < 20) player->jumpCount++;
         int num = player->jumpCount;
         StaminaBar = player->manaBar;
 
