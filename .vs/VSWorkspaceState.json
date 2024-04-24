@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SDL2Project"
   ],
-  "SelectedNode": "\\SDLProject.sln",
+  "SelectedNode": "\\SDL2Project\\SDLProject.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -22,7 +22,6 @@ GSPlay::~GSPlay()
 {
 }
 
-GSPlay* GSPlay::s_Instance = nullptr;
 void GSPlay::Init()
 {
 	m_soundEffectOnClick = std::make_shared<Sound>();
@@ -91,6 +90,8 @@ void GSPlay::Init()
     //Camera::GetInstance()->SetTarget(obj);
     m_listItemAnimation.push_back(m_item);
 }
+
+GSPlay* GSPlay::s_Instance = nullptr;
 
 void GSPlay::Exit()
 {
