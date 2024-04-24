@@ -22,7 +22,7 @@ GSPlay::~GSPlay()
 {
 }
 
-
+GSPlay* GSPlay::s_Instance = nullptr;
 void GSPlay::Init()
 {
 	m_soundEffectOnClick = std::make_shared<Sound>();
@@ -187,6 +187,8 @@ void GSPlay::Update(float deltaTime)
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
 	m_enemy->Update(deltaTime);
+
+    Collision::GetInstance()->Update();
 }
 
 

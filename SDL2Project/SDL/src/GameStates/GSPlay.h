@@ -17,7 +17,7 @@ class GSPlay :
 public:
 	GSPlay();
 	~GSPlay();
-
+    inline GameMap* GetMap() { return m_LevelMap; }
 	void	Init() override;
 	void	Exit() override;
 
@@ -34,7 +34,13 @@ public:
 	int m_KeyPress;
 
     GameMap* m_LevelMap;
-
+    static GSPlay* GetInstance() {
+        if (s_Instance == nullptr) {
+            s_Instance = new GSPlay();
+        }
+        return s_Instance;
+    }
+    static GSPlay* s_Instance;
 
 private:
 	std::shared_ptr<Sprite2D>	m_background;

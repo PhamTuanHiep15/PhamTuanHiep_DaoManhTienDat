@@ -36,7 +36,7 @@ void TileLayer::Render() {
                 int tileRow = ((tileID-1) % ts.ColCount)* ts.TileSize;
                 int tileCol = ((tileID-1) / ts.ColCount) * ts.TileSize;
                 TextureManager::GetInstance()->RenderTile(ts.Name, ts.TileSize, tileRow, tileCol, j * ts.TileSize, i * ts.TileSize, 1, SDL_FLIP_NONE);
-                printf("%d %d\n",tileRow/ ts.TileSize,tileCol/ ts.TileSize);
+               
             }
         }
     }
