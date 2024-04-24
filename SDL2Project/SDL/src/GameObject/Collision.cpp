@@ -4,8 +4,8 @@ Collision* Collision::s_Instance = nullptr;
 
 
 Collision::Collision() : m_CollisionLayer(nullptr) {
-  //  m_CollisionLayer = (TileLayer*)GSPlay::GetInstance()->GetMap()->GetMapLayers().back();
-  //  m_CollisionTilemap = m_CollisionLayer->GetTilemap();
+    m_CollisionLayer = (TileLayer*)GSPlay::GetInstance()->GetMap()->GetMapLayers().back();
+    m_CollisionTilemap = m_CollisionLayer->GetTilemap();
 }
 
 Collision* Collision::GetInstance() {
