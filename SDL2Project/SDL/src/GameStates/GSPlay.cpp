@@ -73,10 +73,9 @@ void GSPlay::Init()
 
 
 	//enemy
-	texture = ResourceManagers::GetInstance()->GetTexture("sneakRight.png");
-	m_enemy = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
-    m_enemy->SetFlip(SDL_FLIP_HORIZONTAL);
-    m_enemy->SetSize(70, 30);
+	texture = ResourceManagers::GetInstance()->GetTexture("dino.png");
+	m_enemy = std::make_shared<Enemy>(texture, 1, 6, 1, 0.2f);
+    m_enemy->SetSize(30, 30);
     m_enemy->Set2DPosition(360, 380);
 	//Camera::GetInstance()->SetTarget(obj);
 	m_listEnemyAnimation.push_back(m_enemy);
@@ -89,6 +88,7 @@ void GSPlay::Init()
     m_item->Set2DPosition(200, 200);
     //Camera::GetInstance()->SetTarget(obj);
     m_listItemAnimation.push_back(m_item);
+    s_Instance = this;
 }
 
 GSPlay* GSPlay::s_Instance = nullptr;
