@@ -59,10 +59,10 @@ private:
     std::shared_ptr<Player> m_player;
 
     std::list<std::shared_ptr<Item>>  m_listItemAnimation;
-    std::shared_ptr<Item> m_item;
+    std::shared_ptr<Item> chest, coin, book, coin1, coin2;
 
     std::list<std::shared_ptr<Enemy>>  m_listEnemyAnimation;
-    std::shared_ptr<Enemy> m_enemy;
+    std::shared_ptr<Enemy> dino, dino1, snake, snake1, snake2, slime, slime1;
 
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
