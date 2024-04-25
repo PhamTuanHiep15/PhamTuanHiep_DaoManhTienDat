@@ -24,22 +24,37 @@ GSPlay::~GSPlay()
 
 void GSPlay::Init()
 {
-	m_soundEffectOnClick = std::make_shared<Sound>();
-	m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
+    //Set Font
+    m_textColor = { 0, 0, 255 };
+    m_textItem = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
+    m_textItem->SetSize(200, 40);
+    m_textItem->Set2DPosition(700, 20);
+    std::string itemText = "item: " + std::to_string(n_Item) + "/5";
+    m_textItem->LoadFromRenderText(itemText.c_str());
 
-	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
+    m_textColor = { 255, 255, 255 };
+    m_GameOver = std::make_shared<Text>("Data/gamera.ttf", m_textColor);
+    m_GameOver->SetSize(450, 75);
+    m_GameOver->Set2DPosition((SCREEN_WIDTH - m_GameOver->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 180);
+    std::string itemText1 = "";
+    m_GameOver->LoadFromRenderText(itemText1.c_str());
+
+    m_soundEffectOnClick = std::make_shared<Sound>();
+    m_soundEffectOnClick->LoadSound("Data/Sounds/click.wav");
+
+    //auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 
 
     //background
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_GSPlay.png");
-	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
-	m_background->SetSize(MAP_WIDTH,MAP_HEIDTH);
-	m_background->Set2DPosition(0, 0);
+    auto texture = ResourceManagers::GetInstance()->GetTexture("bg_GSPlay.png");
+    m_background = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+    m_background->SetSize(MAP_WIDTH, MAP_HEIDTH);
+    m_background->Set2DPosition(0, 0);
 
     //ground
     auto groundTexture = ResourceManagers::GetInstance()->GetTexture("ground.png");
     m_ground = std::make_shared<Sprite2D>(groundTexture, SDL_FLIP_NONE);
-    m_ground->SetSize(SCREEN_WIDTH*4, TILE_SIZE); 
+    m_ground->SetSize(SCREEN_WIDTH * 4, TILE_SIZE);
     m_ground->Set2DPosition(0, SCREEN_HEIDHT - TILE_SIZE);
 
     //map
@@ -49,22 +64,22 @@ void GSPlay::Init()
     m_LevelMap = MapParser::GetInstance()->GetMap("level1");
 
 
-	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
-	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
-	button->SetSize(50, 50);
-	button->Set2DPosition(SCREEN_WIDTH-10-button->GetWidth(), 10);
-	button->SetOnClick([this]() {
-		GameStateMachine::GetInstance()->PopState();
-		});
-	m_listButton.push_back(button);
+    // button close
+    texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
+    button = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+    button->SetSize(50, 50);
+    button->Set2DPosition(SCREEN_WIDTH - 10 - button->GetWidth(), 10);
+    button->SetOnClick([this]() {
+        GameStateMachine::GetInstance()->PopState();
+        });
+    m_listButton.push_back(button);
 
 
     //player
     texture = ResourceManagers::GetInstance()->GetTexture("girl_idle.png");
     m_player = std::make_shared<Player>(texture, 1, 11, 1, 0.2f);
     m_player->SetFlip(SDL_FLIP_HORIZONTAL);
-    m_player->SetSize(TILE_SIZE*1.25, TILE_SIZE*1.25);
+    m_player->SetSize(TILE_SIZE * 1.25, TILE_SIZE * 1.25);
     m_player->Set2DPosition(20,/* SCREEN_HEIDHT - TILE_SIZE * 2*/ 250);
     Camera::GetInstance()->SetTarget(m_player);
     m_listPlayer.push_back(m_player);
@@ -72,7 +87,7 @@ void GSPlay::Init()
     m_KeyPress = 0;
 
 
-	//enemy
+    //enemy
     texture = ResourceManagers::GetInstance()->GetTexture("dino.png");
     dino = std::make_shared<Enemy>(texture, 1, 6, 1, 0.2f);
     dino->SetSize(30, 30);
@@ -81,12 +96,12 @@ void GSPlay::Init()
     m_listEnemyAnimation.push_back(dino);
 
     texture = ResourceManagers::GetInstance()->GetTexture("dino.png");
-	dino1 = std::make_shared<Enemy>(texture, 1, 6, 1, 0.2f);
+    dino1 = std::make_shared<Enemy>(texture, 1, 6, 1, 0.2f);
     dino1->SetSize(30, 30);
     dino1->SetFlip(SDL_FLIP_HORIZONTAL);
     dino1->Set2DPosition(2800, 452.5);
-	//Camera::GetInstance()->SetTarget(obj);
-	m_listEnemyAnimation.push_back(dino1);
+    //Camera::GetInstance()->SetTarget(obj);
+    m_listEnemyAnimation.push_back(dino1);
 
     texture = ResourceManagers::GetInstance()->GetTexture("snake_left.png");
     snake = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
@@ -194,14 +209,14 @@ void GSPlay::HandleKeyEvents(SDL_Event& e) {
 
 void GSPlay::HandleTouchEvents(SDL_Event& e)
 {
-	for (auto button : m_listButton)
-	{
-		if (button->HandleTouchEvent(&e))
-		{
-			m_soundEffectOnClick->PlaySfx(0);
-			break;
-		}
-	}
+    for (auto button : m_listButton)
+    {
+        if (button->HandleTouchEvent(&e))
+        {
+            m_soundEffectOnClick->PlaySfx(0);
+            break;
+        }
+    }
 }
 
 void GSPlay::HandleMouseMoveEvents(int x, int y)
@@ -213,76 +228,94 @@ void GSPlay::Update(float deltaTime)
 {
     m_LevelMap->Update();
 
-	for (auto it : m_listButton)
-	{
-		it->Update(deltaTime);
-	}
-
-	for (auto player : m_listPlayer)
-	{
-
-        player->HandleInput(m_KeyPress, deltaTime);
-        player->PlayerBar();
-
-        SDL_Rect playerRect = player->GetRect();
-        for (auto it : m_listItemAnimation)
-        {
-            SDL_Rect itemRect = it->GetRect();
-
-            bool col = Collision::CheckCollision(playerRect, itemRect);
-            if (col) { 
-                printf("collision"); 
-
-                
-            }
-        }
-        if (playerRect.y == SCREEN_HEIDHT - 2*TILE_SIZE && player->jumpCount < 20) player->jumpCount++;
-        int num = player->jumpCount;
-        StaminaBar = player->manaBar;
-
-
-        printf("%d %d %d\n", playerRect.x, playerRect.y, num);
- 
-		player->Update(deltaTime);
-	}
-	//enemy
-	for (auto it : m_listEnemyAnimation)
-	{
-        it->enemyMove(deltaTime);
-		it->Update(deltaTime);
-	}
-
-    for (auto it : m_listItemAnimation)
+    for (auto it : m_listButton)
     {
         it->Update(deltaTime);
     }
-	//Update position of camera
-	Camera::GetInstance()->Update(deltaTime);
-	dino->Update(deltaTime);
-    snake->Update(deltaTime);
-    snake1->Update(deltaTime);
-    snake2->Update(deltaTime);
-    slime->Update(deltaTime);
 
-    Collision::GetInstance()->Update();
+    if (gameRunning) {
+        for (auto player : m_listPlayer)
+        {
+
+            player->HandleInput(m_KeyPress, deltaTime);
+            player->PlayerBar();
+
+            SDL_Rect playerRect = player->GetRect();
+            for (auto it : m_listItemAnimation)
+            {
+                SDL_Rect itemRect = it->GetRect();
+
+                bool col = Collision::CheckCollision(playerRect, itemRect);
+                if (col) {
+                    printf("collision ");
+                    it->Set2DPosition(-100, -100);
+                    n_Item++;
+                    printf("%d\n", n_Item);
+                    std::string itemText = "item: " + std::to_string(n_Item) + "/5";
+                    m_textItem->LoadFromRenderText(itemText.c_str());
+
+                }
+            }
+            for (auto it : m_listEnemyAnimation)
+            {
+                SDL_Rect itemRect = it->GetRect();
+
+                bool col = Collision::CheckCollision(playerRect, itemRect);
+                if (col) {
+                    printf("collision ");
+                    gameRunning = false;
+                    break;
+                }
+            }
+
+            if (playerRect.y == SCREEN_HEIDHT - 2 * TILE_SIZE && player->jumpCount < 20) player->jumpCount++;
+            int num = player->jumpCount;
+            StaminaBar = player->manaBar;
+
+
+            printf("%d %d %d\n", playerRect.x, playerRect.y, num);
+
+            player->Update(deltaTime);
+        }
+        //enemy
+        for (auto it : m_listEnemyAnimation)
+        {
+            it->enemyMove(deltaTime);
+            it->Update(deltaTime);
+        }
+
+        for (auto it : m_listItemAnimation)
+        {
+            it->Update(deltaTime);
+        }
+        //Update position of camera
+        Camera::GetInstance()->Update(deltaTime);
+        dino->Update(deltaTime);
+        snake->Update(deltaTime);
+        snake1->Update(deltaTime);
+        snake2->Update(deltaTime);
+        slime->Update(deltaTime);
+
+        Collision::GetInstance()->Update();
+    }
 }
 
 
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
-	m_background->Draw(renderer);
+    m_background->Draw(renderer);
 
-	//m_score->Draw();
+    //m_score->Draw();
     m_LevelMap->Render();
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); 
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
     SDL_RenderFillRect(renderer, &StaminaBar);
 
-	for (auto it : m_listButton)
-	{
-		it->Draw(renderer);
-	}
-//  player
+    for (auto it : m_listButton)
+    {
+        it->Draw(renderer);
+    }
+    //  player
     for (auto it : m_listPlayer)
     {
         it->Draw(renderer);
@@ -290,16 +323,16 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 
 
 
-	for (auto it : m_listEnemyAnimation)
-	{
-		it->Draw(renderer);
-	}
+    for (auto it : m_listEnemyAnimation)
+    {
+        it->Draw(renderer);
+    }
 
     for (auto it : m_listItemAnimation)
     {
         it->Draw(renderer);
     }
+    m_textItem->Draw(renderer);
+    m_GameOver->Draw(renderer);
 
-    
-	
 }
