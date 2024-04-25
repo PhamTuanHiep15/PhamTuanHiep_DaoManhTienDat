@@ -253,6 +253,10 @@ void GSPlay::Update(float deltaTime)
                     printf("%d\n", n_Item);
                     std::string itemText = "item: " + std::to_string(n_Item) + "/5";
                     m_textItem->LoadFromRenderText(itemText.c_str());
+                    if (n_Item ==5 ) { gameRunning = false;
+                    std::string itemText1 = "You Win ";
+                    m_GameOver->LoadFromRenderText(itemText1.c_str());}
+                       
 
                 }
             }
@@ -263,8 +267,11 @@ void GSPlay::Update(float deltaTime)
                 bool col = Collision::CheckCollision(playerRect, itemRect);
                 if (col) {
                     printf("collision ");
+                    std::string itemText1 = "Game Over ";
+                    m_GameOver->LoadFromRenderText(itemText1.c_str());
                     gameRunning = false;
                     break;
+
                 }
             }
 
