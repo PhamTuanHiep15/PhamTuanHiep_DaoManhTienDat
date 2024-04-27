@@ -76,9 +76,8 @@ void GSPlay::Init()
 
 
     //player
-    texture = ResourceManagers::GetInstance()->GetTexture("girl_idle.png");
-    m_player = std::make_shared<Player>(texture, 1, 11, 1, 0.2f);
-    m_player->SetFlip(SDL_FLIP_HORIZONTAL);
+    texture = ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png");
+    m_player = std::make_shared<Player>(texture, 1, 7, 1, 0.2f);
     m_player->SetSize(TILE_SIZE * 1.25, TILE_SIZE * 1.25);
     m_player->Set2DPosition(20,/* SCREEN_HEIDHT - TILE_SIZE * 2*/ 250);
     Camera::GetInstance()->SetTarget(m_player);

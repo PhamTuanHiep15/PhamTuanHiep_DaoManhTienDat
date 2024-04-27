@@ -51,11 +51,11 @@ void Player::HandleInput(int keyPress, float deltaTime) {
     if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4) ) {
         if (keyPress & 1) {
             PlayerMoveLeft(deltaTime);
-            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_run_left.png"));
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_run_left.png"));
         }
         else if (keyPress & (1 << 2)) {
             PlayerMoveRight(deltaTime);
-            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_run_right.png"));
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_run_right.png"));
         }
 
         /*
@@ -71,11 +71,11 @@ void Player::HandleInput(int keyPress, float deltaTime) {
 
         else if (keyPress & (1 << 4)) {
             PlayerJump();
-            SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_jump.png"));
+            SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_jump.png"));
         }
-    } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_falling.png"));
+    } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_fall.png"));
    
-    else SetTexture(ResourceManagers::GetInstance()->GetTexture("girl_idle.png"));
+    else SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png"));
 }
 void Player::PlayerBar() {
     //manaBar
