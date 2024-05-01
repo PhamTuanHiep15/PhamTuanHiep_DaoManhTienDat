@@ -81,7 +81,7 @@ void Player::PlayerBar() {
     //manaBar
     manaBar.x = 10;
     manaBar.y = 10;
-    manaBar.w = 2*jumpCount;
+    manaBar.w = 20*jumpCount;
     manaBar.h = 10;
     
     //hpBar

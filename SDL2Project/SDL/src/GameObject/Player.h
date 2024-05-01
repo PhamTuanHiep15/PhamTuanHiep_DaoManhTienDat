@@ -22,7 +22,7 @@ public:
 
 
 
-    int playerSpeed = PLAYER_SPEED_DEFAULT*5;
+    int playerSpeed = PLAYER_SPEED_DEFAULT;
     int jumpSpeed = 300;
     int jumpCount = STAMINA;
     int lv = 1;

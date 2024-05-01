@@ -288,7 +288,7 @@ void GSPlay::Update(float deltaTime)
                 }
             }
 
-            if (playerRect.y == SCREEN_HEIDHT - 2 * TILE_SIZE && player->jumpCount < 20) player->jumpCount++;
+            if (playerRect.y == SCREEN_HEIDHT - 2 * TILE_SIZE && player->jumpCount < STAMINA) player->jumpCount++;
             int num = player->jumpCount;
             StaminaBar = player->manaBar;
 
