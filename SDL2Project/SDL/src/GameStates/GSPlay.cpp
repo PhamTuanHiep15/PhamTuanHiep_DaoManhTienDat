@@ -263,8 +263,8 @@ void GSPlay::Update(float deltaTime)
                     }      
                 }
             if (n_Item == 5 && 
-                2640 < playerRect.x && 
-                playerRect.x < 2725 && 
+                2680 < playerRect.x && 
+                playerRect.x < 2745 && 
                 40 < playerRect.y && 
                 playerRect.y < 50)
             {
@@ -311,13 +311,6 @@ void GSPlay::Update(float deltaTime)
         }
         //Update position of camera
         Camera::GetInstance()->Update(deltaTime);
-
-        /*dino->Update(deltaTime);
-        snake->Update(deltaTime);
-        snake1->Update(deltaTime);
-        snake2->Update(deltaTime);
-        slime->Update(deltaTime);*/
-        
         Collision::GetInstance()->Update();
     }
 }

@@ -30,5 +30,5 @@ public:
     bool canJump = true;
     SDL_Rect manaBar;
     SDL_Rect hpBar;
-
+    SDL_Rect m_Rect;
 };

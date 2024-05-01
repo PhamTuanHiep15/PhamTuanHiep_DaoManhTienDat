@@ -1,6 +1,7 @@
-#include "player.h"
+﻿#include "Player.h"
 #include "Define.h"
 #include "ResourceManagers.h"
+#include "Collision.h"
 
 Player::Player(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime)
     : SpriteAnimation(texture, spriteRow, frameCount, numAction, frameTime) {
@@ -47,7 +48,6 @@ SDL_Rect Player::GetRect() {
 
 
 void Player::HandleInput(int keyPress, float deltaTime) {
-
     if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4) ) {
         if (keyPress & 1) {
             PlayerMoveLeft(deltaTime);
@@ -76,6 +76,12 @@ void Player::HandleInput(int keyPress, float deltaTime) {
     } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_fall.png"));
    
     else SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png"));
+
+    SDL_Rect previousRect = GetRect();
+    if (Collision::GetInstance()->MapCollision(GetRect())) {
+        m_position.x = previousRect.x;
+        m_position.y = previousRect.y;
+    }
 }
 void Player::PlayerBar() {
     //manaBar
@@ -110,4 +116,5 @@ void Player::Update(float deltatime) {
     else {
         m_position.y += m_velocityY * deltatime;
     }
+    m_Rect = GetRect();
 }

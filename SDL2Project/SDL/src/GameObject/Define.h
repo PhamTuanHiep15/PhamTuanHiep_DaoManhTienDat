@@ -11,5 +11,5 @@
 #define enemy_speed 0.8
 
 #define GRAVITY PLAYER_SPEED_DEFAULT*10
-#define STAMINA 15
+#define STAMINA 20
 #define HP_DEFAULT 100

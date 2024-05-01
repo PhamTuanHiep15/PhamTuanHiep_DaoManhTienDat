@@ -1,4 +1,5 @@
 #include "collision.h"
+#include "GSPlay.h"
 
 Collision* Collision::s_Instance = nullptr;
 
