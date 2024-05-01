@@ -252,12 +252,19 @@ void GSPlay::Update(float deltaTime)
                     printf("%d\n", n_Item);
                     std::string itemText = "item: " + std::to_string(n_Item) + "/5";
                     m_textItem->LoadFromRenderText(itemText.c_str());
-                    if (n_Item ==5 ) { gameRunning = false;
-                    std::string itemText1 = "You Win ";
-                    m_GameOver->LoadFromRenderText(itemText1.c_str());}
-                       
-
+                   
+                    }      
                 }
+            if (n_Item == 5 && 
+                2640 < playerRect.x && 
+                playerRect.x < 2725 && 
+                40 < playerRect.y && 
+                playerRect.y < 50)
+            {
+                std::string itemText1 = "You Win";
+                m_GameOver->LoadFromRenderText(itemText1.c_str());
+                gameRunning = false;
+                break;
             }
             for (auto it : m_listEnemyAnimation)
             {
@@ -286,7 +293,9 @@ void GSPlay::Update(float deltaTime)
         //enemy
         for (auto it : m_listEnemyAnimation)
         {
-            it->enemyMove(deltaTime);
+            it->enemyMove1(deltaTime);
+            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_run_left.png"));
+
             it->Update(deltaTime);
         }
 
@@ -296,12 +305,14 @@ void GSPlay::Update(float deltaTime)
         }
         //Update position of camera
         Camera::GetInstance()->Update(deltaTime);
-        dino->Update(deltaTime);
+
+        /*dino->Update(deltaTime);
         snake->Update(deltaTime);
         snake1->Update(deltaTime);
         snake2->Update(deltaTime);
         slime->Update(deltaTime);
-
+*/
+        
         Collision::GetInstance()->Update();
     }
 }

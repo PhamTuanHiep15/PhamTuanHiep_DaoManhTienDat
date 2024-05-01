@@ -9,7 +9,8 @@ public:
 
 
     void updatePosition(float deltaX, float deltaY);
-    void enemyMove(float deltatime);
+    void Update(float deltatime) override;
+    void enemyMove1(float deltatime);
 
 
 };
