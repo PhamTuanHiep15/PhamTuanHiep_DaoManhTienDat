@@ -91,7 +91,8 @@ void GSPlay::Init()
     dino = std::make_shared<Enemy>(texture, 1, 6, 1, 0.2f);
     dino->SetSize(30, 30);
     dino->Set2DPosition(1120, 69.5);
-    //Camera::GetInstance()->SetTarget(obj);
+    dino->SetEnemyType(EnemyType::DINO);
+    dino->SetDirection(Direction::RIGHT);
     m_listEnemyAnimation.push_back(dino);
 
     texture = ResourceManagers::GetInstance()->GetTexture("dino.png");
@@ -99,42 +100,48 @@ void GSPlay::Init()
     dino1->SetSize(30, 30);
     dino1->SetFlip(SDL_FLIP_HORIZONTAL);
     dino1->Set2DPosition(2800, 452.5);
-    //Camera::GetInstance()->SetTarget(obj);
+    dino1->SetEnemyType(EnemyType::DINO);
+    dino1->SetDirection(Direction::LEFT);
     m_listEnemyAnimation.push_back(dino1);
 
     texture = ResourceManagers::GetInstance()->GetTexture("snake_left.png");
     snake = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
     snake->SetSize(30, 18);
-    snake->Set2DPosition(445, 205);
-    //Camera::GetInstance()->SetTarget(obj);
+    snake->Set2DPosition(445, 205); 
+    snake->SetEnemyType(EnemyType::SNAKE);
+    snake->SetDirection(Direction::LEFT);
     m_listEnemyAnimation.push_back(snake);
 
-    texture = ResourceManagers::GetInstance()->GetTexture("snake_right.png");
+    texture = ResourceManagers::GetInstance()->GetTexture("snake_left.png");
     snake1 = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
     snake1->SetSize(30, 18);
     snake1->Set2DPosition(2480, 205);
-    //Camera::GetInstance()->SetTarget(obj);
+    snake1->SetEnemyType(EnemyType::SNAKE);
+    snake1->SetDirection(Direction::RIGHT);
     m_listEnemyAnimation.push_back(snake1);
 
     texture = ResourceManagers::GetInstance()->GetTexture("snake_left.png");
     snake2 = std::make_shared<Enemy>(texture, 1, 4, 1, 0.2f);
     snake2->SetSize(30, 18);
     snake2->Set2DPosition(2750, 205);
-    //Camera::GetInstance()->SetTarget(obj);
+    snake2->SetEnemyType(EnemyType::SNAKE);
+    snake2->SetDirection(Direction::LEFT);
     m_listEnemyAnimation.push_back(snake2);
 
     texture = ResourceManagers::GetInstance()->GetTexture("slime.png");
     slime = std::make_shared<Enemy>(texture, 1, 5, 1, 0.2f);
     slime->SetSize(40, 40);
     slime->Set2DPosition(1002, 380);
-    //Camera::GetInstance()->SetTarget(obj);
+    slime->SetEnemyType(EnemyType::SLIME);
+    slime->SetDirection(Direction::RIGHT);
     m_listEnemyAnimation.push_back(slime);
 
     texture = ResourceManagers::GetInstance()->GetTexture("slime.png");
     slime1 = std::make_shared<Enemy>(texture, 1, 5, 1, 0.2f);
     slime1->SetSize(40, 40);
     slime1->Set2DPosition(1850, 410);
-    //Camera::GetInstance()->SetTarget(obj);
+    slime1->SetEnemyType(EnemyType::SLIME);
+    slime1->SetDirection(Direction::RIGHT);
     m_listEnemyAnimation.push_back(slime1);
 
     //item
@@ -294,7 +301,6 @@ void GSPlay::Update(float deltaTime)
         for (auto it : m_listEnemyAnimation)
         {
             it->enemyMove1(deltaTime);
-            it->SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_run_left.png"));
 
             it->Update(deltaTime);
         }
@@ -310,8 +316,7 @@ void GSPlay::Update(float deltaTime)
         snake->Update(deltaTime);
         snake1->Update(deltaTime);
         snake2->Update(deltaTime);
-        slime->Update(deltaTime);
-*/
+        slime->Update(deltaTime);*/
         
         Collision::GetInstance()->Update();
     }

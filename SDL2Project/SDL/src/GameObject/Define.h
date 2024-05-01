@@ -8,6 +8,7 @@
 #define LIMIT_FPS 60
 
 #define PLAYER_SPEED_DEFAULT 144
+#define enemy_speed 0.8
 
 #define GRAVITY PLAYER_SPEED_DEFAULT*10
 #define STAMINA 10000
