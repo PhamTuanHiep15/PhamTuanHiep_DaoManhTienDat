@@ -116,7 +116,7 @@ void Player::Update(float deltatime) {
             m_velocityY = 0;
         }
         else {
-            m_position.y = preRect.y;
+            m_position.y = preRect.y;   
         }
     }
       
