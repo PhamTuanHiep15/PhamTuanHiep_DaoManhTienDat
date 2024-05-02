@@ -1,0 +1,172 @@
+﻿cl : command line  warning D9035: option 'Zc:forScope-' has been deprecated and will be removed in a future release
+  Game.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\Game.cpp(68,27): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+  ResourceManagers.cpp
+  Camera.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Camera.cpp(23,47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Camera.cpp(24,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Camera.cpp(44,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Camera.cpp(44,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CMath.cpp
+  Collision.cpp
+  Enemy.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Enemy.cpp(21,40): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Enemy.cpp(31,40): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Enemy.cpp(43,40): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Enemy.cpp(52,40): warning C4305: '-=': truncation from 'double' to 'float'
+  InputHandler.cpp
+  MapParser.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Map\MapParser.cpp(26,18): warning C4101: 'numrows': unreferenced local variable
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Map\MapParser.cpp(26,9): warning C4101: 'numcols': unreferenced local variable
+  TileLayer.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Map\TileLayer.cpp(17,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Map\TileLayer.cpp(18,36): warning C4018: '<': signed/unsigned mismatch
+  MouseButton.cpp
+  MusicManager.cpp
+  Item.cpp
+  Player.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Player.cpp(33,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Player.cpp(42,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Player.cpp(43,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Player.cpp(83,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Player.cpp(119,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Renderer.cpp
+  Sound.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Sound.cpp(100,21): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Sprite2D.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Sprite2D.cpp(26,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Sprite2D.cpp(26,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  SpriteAnimation.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\SpriteAnimation.cpp(31,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\SpriteAnimation.cpp(31,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\SpriteAnimation.cpp(86,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\SpriteAnimation.cpp(87,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Text.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Text.cpp(34,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\Text.cpp(34,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  TextureManager.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(111,25): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(112,25): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(115,28): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(116,28): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(126,31): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(126,31): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(126,46): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(126,46): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(132,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(133,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,61): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,61): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,80): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,90): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(134,90): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(135,28): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(135,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(135,72): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameObject\TextureManager.cpp(135,72): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Timer.cpp
+  Compiling...
+  GameStateBase.cpp
+  GameStateMachine.cpp
+  GSCredit.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSCredit.cpp(34,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSCredit.cpp(45,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSCredit.cpp(49,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSCredit.cpp(53,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GSIntro.cpp
+  GSMenu.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(37,104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(37,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(49,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(61,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(71,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSMenu.cpp(84,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GSOption.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSOption.cpp(38,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSOption.cpp(49,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSOption.cpp(57,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GSPlay.cpp
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSPlay.cpp(38,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSPlay.cpp(51,38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSPlay.cpp(71,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSPlay.cpp(81,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\src\GameStates\GSPlay.cpp(81,33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 2334 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SDL.vcxproj -> C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\x64\Release\SDL.exe
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDLLib\DynamicLib\SDL2.dll
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDLLib\DynamicLib\SDL2_image.dll
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDLLib\DynamicLib\SDL2_mixer.dll
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDLLib\DynamicLib\SDL2_ttf.dll
+  4 File(s) copied
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\gamera.ttf
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\info.ttf
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\info1.otf
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Map\tileset.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Map\untitled.tmx
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Sounds\click.wav
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Sounds\cursor.wav
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Sounds\Menu.wav
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Sounds\Play.wav
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\1.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\10.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\11.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\12.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\15.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\16.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\19.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\21.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\22.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\23.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\24.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\25.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\26.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\27.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\3.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\4.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\5.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\9.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\background.tga
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\bg_GSPlay.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\bg_main_menu.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\bg_play.jpg
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\bg_play02.jpg
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\bg_play2.tga
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\book.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_close.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_credit.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_exit.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_menu.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_music.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_music_off.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_music_on.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_option.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_play.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_sfx.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_sfx_off.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\btn_sfx_on.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\chest.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\coin.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\dino.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\fireboy_fall.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\fireboy_idle.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\fireboy_jump.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\fireboy_run_left.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\fireboy_run_right.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\ground.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\logo.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\slime.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\snake_left.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\snake_right.png
+  C:\Users\Legion\Downloads\Asset Game\PhamTuanHiep15\PhamTuanHiep_DaoManhTienDat\SDL2Project\SDL\Data\Textures\up.png
+  60 File(s) copied
