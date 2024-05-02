@@ -265,8 +265,8 @@ void GSPlay::Update(float deltaTime)
             if (n_Item == 5 && 
                 2680 < playerRect.x && 
                 playerRect.x < 2745 && 
-                40 < playerRect.y && 
-                playerRect.y < 50)
+                75 < playerRect.y && 
+                playerRect.y < 100)
             {
                 std::string itemText1 = "You Win";
                 m_GameOver->LoadFromRenderText(itemText1.c_str());
@@ -278,7 +278,7 @@ void GSPlay::Update(float deltaTime)
                 SDL_Rect itemRect = it->GetRect();
 
                 bool col = Collision::CheckCollision(playerRect, itemRect);
-                if (col) {
+                if (col || playerRect.y>576) {
                     printf("collision ");
                     std::string itemText1 = "Game Over ";
                     m_GameOver->LoadFromRenderText(itemText1.c_str());

@@ -39,10 +39,10 @@ void Player::PlayerJump() {
 
 SDL_Rect Player::GetRect() {
     SDL_Rect rect;
-    rect.x = m_position.x ;
-    rect.y = m_position.y; 
-    rect.w = TILE_SIZE / 3; 
-    rect.h = TILE_SIZE ;
+    rect.x = m_position.x;
+    rect.y = m_position.y+ TILE_SIZE*9/10;
+    rect.w = TILE_SIZE; 
+    rect.h = TILE_SIZE /10;
 
     SDL_Rect rect2 = rect;
     return rect2;
@@ -50,7 +50,7 @@ SDL_Rect Player::GetRect() {
 
 
 void Player::HandleInput(int keyPress, float deltaTime) {
-    SDL_Rect previousRect = GetRect();
+    SDL_Rect preRect = GetRect();
     if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4) ) {
         if (keyPress & 1) {
             PlayerMoveLeft(deltaTime);
@@ -79,12 +79,10 @@ void Player::HandleInput(int keyPress, float deltaTime) {
     } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_fall.png"));
    
     else SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png"));
-
-
     if (Collision::GetInstance()->MapCollision(GetRect())) {
-        m_position.x = previousRect.x;
-        
+        m_position.x = preRect.x;
     }
+
 }
 void Player::PlayerBar() {
     //manaBar
@@ -101,6 +99,7 @@ void Player::PlayerBar() {
 }
 
 void Player::Update(float deltatime) {
+    SDL_Rect preRect = GetRect();
     m_currentTicks += deltatime;
     if (m_currentTicks >= m_frameTime) {
         m_currentFrame++;
@@ -111,13 +110,20 @@ void Player::Update(float deltatime) {
     }
     //gravity
     m_velocityY += GRAVITY * deltatime;
-    SDL_Rect previousRect = GetRect();
     if (Collision::GetInstance()->MapCollision(GetRect())) {
-        m_velocityY = 0;
-        m_position.y = previousRect.y-1;
+        if (m_velocityY >= 0) {
+            m_position.y -= 1;
+            m_velocityY = 0;
+        }
+        else {
+            m_position.y = preRect.y;
+        }
     }
+      
     else {
         m_position.y += m_velocityY * deltatime;
     }
     m_Rect = GetRect();
-}
+
+} 
+
