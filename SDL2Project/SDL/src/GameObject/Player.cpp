@@ -39,11 +39,13 @@ void Player::PlayerJump() {
 
 SDL_Rect Player::GetRect() {
     SDL_Rect rect;
-    rect.x = m_position.x+ TILE_SIZE;
-    rect.y = m_position.y;
-    rect.w = TILE_SIZE;
-    rect.h = TILE_SIZE;
-    return rect;
+    rect.x = m_position.x ;
+    rect.y = m_position.y; 
+    rect.w = TILE_SIZE / 3; 
+    rect.h = TILE_SIZE ;
+
+    SDL_Rect rect2 = rect;
+    return rect2;
 }
 
 
@@ -81,7 +83,7 @@ void Player::HandleInput(int keyPress, float deltaTime) {
 
     if (Collision::GetInstance()->MapCollision(GetRect())) {
         m_position.x = previousRect.x;
-        m_position.y = previousRect.y;
+        
     }
 }
 void Player::PlayerBar() {
@@ -109,10 +111,10 @@ void Player::Update(float deltatime) {
     }
     //gravity
     m_velocityY += GRAVITY * deltatime;
-
-    if (m_position.y + TILE_SIZE >= SCREEN_HEIDHT - TILE_SIZE) {
+    SDL_Rect previousRect = GetRect();
+    if (Collision::GetInstance()->MapCollision(GetRect())) {
         m_velocityY = 0;
-        m_position.y = SCREEN_HEIDHT - TILE_SIZE - TILE_SIZE;
+        m_position.y = previousRect.y-1;
     }
     else {
         m_position.y += m_velocityY * deltatime;

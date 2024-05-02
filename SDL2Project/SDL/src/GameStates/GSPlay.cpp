@@ -79,7 +79,7 @@ void GSPlay::Init()
     texture = ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png");
     m_player = std::make_shared<Player>(texture, 1, 7, 1, 0.2f);
     m_player->SetSize(TILE_SIZE * 1.25, TILE_SIZE * 1.25);
-    m_player->Set2DPosition(20,250);
+    m_player->Set2DPosition(20,300);
     Camera::GetInstance()->SetTarget(m_player);
     m_listPlayer.push_back(m_player);
 
@@ -288,7 +288,7 @@ void GSPlay::Update(float deltaTime)
                 }
             }
 
-            if (playerRect.y == SCREEN_HEIDHT - 2 * TILE_SIZE && player->jumpCount < STAMINA) player->jumpCount++;
+            if ( player->jumpCount < STAMINA) player->jumpCount++;
             int num = player->jumpCount;
             StaminaBar = player->manaBar;
 
