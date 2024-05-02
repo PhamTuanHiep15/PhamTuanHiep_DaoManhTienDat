@@ -5,7 +5,7 @@
 
 Player::Player(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime)
     : SpriteAnimation(texture, spriteRow, frameCount, numAction, frameTime) {
-    
+
 }
 
 
@@ -28,7 +28,7 @@ void Player::PlayerMoveDown(float deltaTime)
 {
 }
 void Player::PlayerJump() {
-    m_position.y -= 1;  
+    m_position.y -= 1;
     if (canJump) {
         m_velocityY = -jumpSpeed;
         jumpCount--;
@@ -39,17 +39,16 @@ void Player::PlayerJump() {
 
 SDL_Rect Player::GetRect() {
     SDL_Rect rect;
-    rect.x = m_position.x+ TILE_SIZE;
+    rect.x = m_position.x + TILE_SIZE / 3;
     rect.y = m_position.y;
-    rect.w = TILE_SIZE;
+    rect.w = TILE_SIZE / 3;
     rect.h = TILE_SIZE;
     return rect;
 }
 
 
 void Player::HandleInput(int keyPress, float deltaTime) {
-    SDL_Rect previousRect = GetRect();
-    if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4) ) {
+    if (keyPress & 1 || keyPress & (1 << 2) || keyPress & (1 << 4)) {
         if (keyPress & 1) {
             PlayerMoveLeft(deltaTime);
             SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_run_left.png"));
@@ -74,13 +73,14 @@ void Player::HandleInput(int keyPress, float deltaTime) {
             PlayerJump();
             SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_jump.png"));
         }
-    } else if (m_velocityY > 0 ) SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_fall.png"));
-   
+    }
+    else if (m_velocityY > 0) SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_fall.png"));
+
     else SetTexture(ResourceManagers::GetInstance()->GetTexture("fireboy_idle.png"));
 
-
+    SDL_Rect previousRect = GetRect();
     if (Collision::GetInstance()->MapCollision(GetRect())) {
-        m_position.x = previousRect.x;
+        m_position.x = previousRect.x - TILE_SIZE / 3;
         m_position.y = previousRect.y;
     }
 }
@@ -88,9 +88,9 @@ void Player::PlayerBar() {
     //manaBar
     manaBar.x = 10;
     manaBar.y = 10;
-    manaBar.w = 20*jumpCount;
+    manaBar.w = 20 * jumpCount;
     manaBar.h = 10;
-    
+
     //hpBar
     hpBar.x = 10;
     hpBar.y = 30;
